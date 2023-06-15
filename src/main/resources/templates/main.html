@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>WebCalculator</title>
+    <link rel="stylesheet" href="/static/css/style.css" th:href="@{/css/style.css}">
+
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+
+            <div class="display">
+                <p class="disp1" th:text="${result}"></p>
+            </div>
+
+            <div class="display">
+                <p class="disp2"></p>
+            </div>
+
+            <div class="buttonss">
+                <button class="buttons other">(</button>
+                <button class="buttons other">)</button>
+                <button class="buttons other">x</button>
+                <button class="buttons ac">AC</button>
+                <button class="buttons oper">^</button>
+                <button class="buttons">+/-</button>
+                <button class="buttons oper">/</button>
+
+                <button class="buttons func">sin</button>
+                <button class="buttons func">cos</button>
+                <button class="buttons func">tan</button>
+                <button class="buttons num">7</button>
+                <button class="buttons num">8</button>
+                <button class="buttons num">9</button>
+                <button class="buttons oper">*</button>
+
+                <button class="buttons func">asin</button>
+                <button class="buttons func">acos</button>
+                <button class="buttons func">atan</button>
+                <button class="buttons num">4</button>
+                <button class="buttons num">5</button>
+                <button class="buttons num">6</button>
+                <button class="buttons oper">-</button>
+
+                <button class="buttons func">log</button>
+                <button class="buttons func">sqrt</button>
+                <button class="buttons">mod</button>
+                <button class="buttons num">1</button>
+                <button class="buttons num">2</button>
+                <button class="buttons num">3</button>
+                <button class="buttons oper">+</button>
+
+                <button class="buttons func">ln</button>
+                <button class="buttons">graph</button>
+                <button class="buttons num">e</button>
+                <button class="buttons num">0</button>
+                <button class="buttons num">0</button>
+                <button class="buttons num">.</button>
+<!--                <button class="buttons eq">=</button>-->
+
+                <button class="buttons eq" form="form" type="submit" formaction="/calc">=</button>
+
+                <form method="get" id="form">
+                    <input id="ff" type="hidden" name="calcStr" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log("Ya TYT");
+    </script>
+
+    <script src="js_script.js"></script>
+
+</body>
+</html>
