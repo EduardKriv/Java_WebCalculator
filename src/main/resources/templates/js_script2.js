@@ -107,5 +107,4 @@
 //            outRez.textContent += out.textContent + event.target.textContent;
 //            out.textContent = '';
 //        }
-//        prev_class = event.target.classList.back;
 }
