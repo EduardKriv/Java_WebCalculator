@@ -1,0 +1,93 @@
+.header{
+    background: #e3f9ff;
+    -background: #00FF7F;
+    display: grid;
+    color: var(--text-color);
+    text-align: center;
+    font-size: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.item{
+    background: linear-gradient(rgba(35, 41, 62), rgba(35, 61, 102));
+    height: 50px;
+    padding-top: 12px;
+    color: var(--text-color);
+    cursor:pointer;
+    text-decoration:none;
+}
+
+.item:hover{
+    -border-radius: 9px;
+
+     background: linear-gradient(90deg, #00FF7F 0%, #00CED1 100%);
+     border-top-color: transparent;
+     border-bottom-color: transparent;
+     border-right-color: #00CED1;
+     border-left-color: #00FF7F;
+
+    -color: #00FF7F;
+}
+
+.hide-history{
+}
+
+.hide-history:hover{
+    border: none;
+}
+
+.history:hover + .hide-history{
+    display: block;
+}
+
+.hide-history{
+    background: rgba(35, 61, 102);
+    display: none;
+    position: absolute;
+    top: 50px;
+    width: 25%;
+    right: 0%;
+    padding: 10px;
+}
+
+.hide-history:hover{
+    display: block;
+}
+
+.table{
+    font-size: 15px;
+    text-align: left;
+    padding: 0px;
+}
+
+.hide-theme{
+    background: rgba(35, 61, 102);
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    display: none;
+    position: absolute;
+    top: 50px;
+    width: 25%;
+    right: 25%;
+    padding: 10px;
+}
+
+.theme:hover + .hide-theme{
+    display: block;
+}
+
+.hide-theme:hover{
+    display: block;
+}
+
+.but-clean{
+    background: none;
+    border: none;
+    position: bottom;
+    font-size: 15px;
+    width: 100%;
+}
+
+.credit-header{
+    grid-template-columns: 1fr 1fr;
+}

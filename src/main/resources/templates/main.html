@@ -4,14 +4,37 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>WebCalculator</title>
-    <link rel="stylesheet" href="/static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="/static/css/interface.css" th:href="@{/css/interface.css}">
+    <link rel="stylesheet" href="/static/css/header.css" th:href="@{/css/header.css}">
 
+    <script type="text/javascript" src="../static/js/style.js" th:src="@{js/style.js}"></script>
 
 </head>
 <body>
-    <div class="container">
-        <div class="nohide" href=”https://www.w3docs.com/”>W3docs</div>
+    <div class="header">
+        <a class="item" href="credit.html" th:href="credit.html">Credit Calculator</a>
+        <a class="item" href="deposit.html" th:href="deposit.html">Deposit Calculator</a>
+        <a class="item theme" href="#">Color Theme</a>
+        <div class="hide-theme">
+            <button class="item but-clean" type="submit" onclick="setYellowTextColor()">Theme1</button>
+            <button class="item but-clean" type="submit" onclick="setRedTextColor()">Theme2</button>
+            <button class="item but-clean" type="submit" onclick="setWhiteTextColor()">Theme3</button>
+        </div>
 
+        <a class="item history" href="#">History</a>
+
+        <div class="hide-history">
+            <table class="table" style="width:100%">
+                <tr th:each="exp : ${expList}">
+                    <td th:utext="${exp}"></td>
+                </tr>
+            </table>
+            <button class="item but-clean" form="form" type="submit" formaction="/clean">Clean</button>
+        </div>
+
+    </div>
+
+    <div class="container">
         <div class="calculator">
             <div class="interface">
                 <div class="window">
@@ -69,16 +92,6 @@
 
                 </div>
             </div>
-
-            <div class="hide">History
-                <table class="table" style="width:100%">
-                    <tr th:each="exp : ${expList}">
-                        <td th:utext="${exp}"></td>
-                    </tr>
-                </table>
-                <button class="buttons" form="form" type="submit" formaction="/clean">Clean</button>
-            </div>
-
         </div>
 
     </div>
@@ -86,36 +99,3 @@
 
 </body>
 </html>
-
-<!--<html>-->
-<!--<title>Заголовок документа</title>-->
-<!--<head>-->
-<!--    <style>-->
-
-<!--      .hide {-->
-<!--      display: none;-->
-<!--      border: 5px double #b4b8bf;-->
-<!--      }-->
-
-<!--      a:hover + div {-->
-<!--      display: block;-->
-<!--      color: #4287f5;-->
-<!--      font-size: 20px;-->
-<!--      }-->
-<!--    </style>-->
-<!--</head>-->
-<!--<body>-->
-
-<!--<a href=”https://www.w3docs.com/”>W3docs</a>-->
-<!--<div class="hide">-->
-<!--    Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.-->
-<!--    <div>-->
-<!--        Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.-->
-<!--    </div>-->
-<!--</div>-->
-
-<!--</body>-->
-<!--</html>-->
