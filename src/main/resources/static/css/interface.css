@@ -3,24 +3,29 @@
   --back-container-color: #e3f9ff;
 }
 
-*{
+html {
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
+    font-family: Trebuchet MS, sans-serif, bold;
 }
 
-.container{
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
     width: 100%;
     height: 100vh;
-    background: var(--back-container-color);
     display: grid;
     align-items: center;
     justify-content: center;
 }
 
 .calculator{
-    display: grid;
+    display: flex;
     grid-template-columns: 600px 200px;
 }
 
@@ -59,8 +64,8 @@
 .buttonss{
     display: grid;
     gap: 3px;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
 }
 
  .buttons:hover{

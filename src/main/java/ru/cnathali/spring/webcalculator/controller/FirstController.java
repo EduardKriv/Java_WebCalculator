@@ -13,7 +13,7 @@ public class FirstController {
 
     @GetMapping("/")
     public String getMainPage() {
-        return "main";
+        return "testswipe";
     }
 
     @GetMapping("/calc")
@@ -26,7 +26,7 @@ public class FirstController {
 
         model.addAttribute("expList", expList);
 
-        return "main";
+        return "testswipe";
     }
 
     @GetMapping("/clean")

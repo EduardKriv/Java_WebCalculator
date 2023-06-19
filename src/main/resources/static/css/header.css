@@ -1,15 +1,16 @@
 .header{
-    background: #e3f9ff;
+    -background: #e3f9ff;
     -background: #00FF7F;
     display: grid;
     color: var(--text-color);
     text-align: center;
     font-size: 20px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
 }
 
-.item{
+-.head-item{
     background: linear-gradient(rgba(35, 41, 62), rgba(35, 61, 102));
+    border: none;
     height: 50px;
     padding-top: 12px;
     color: var(--text-color);
@@ -17,19 +18,36 @@
     text-decoration:none;
 }
 
-.item:hover{
-    -border-radius: 9px;
+.head-item{
+    -background: linear-gradient(rgba(35, 41, 62), rgba(35, 61, 102));
+    background: linear-gradient(to right, rgba(67, 124, 205), #00FF7F);
 
+    -height: 50px;
+    padding-top: 12px;
+    -color: var(--text-color);
+    -cursor:pointer;
+    -text-decoration:none;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fade 1s easy-in 1s;
+    -opacity: 1;
+    }
+
+    @keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.head-item:hover{
      background: linear-gradient(90deg, #00FF7F 0%, #00CED1 100%);
      border-top-color: transparent;
      border-bottom-color: transparent;
      border-right-color: #00CED1;
      border-left-color: #00FF7F;
-
-    -color: #00FF7F;
-}
-
-.hide-history{
 }
 
 .hide-history:hover{
@@ -45,9 +63,10 @@
     display: none;
     position: absolute;
     top: 50px;
-    width: 25%;
+    width: 20%;
     right: 0%;
     padding: 10px;
+    z-index: 2;
 }
 
 .hide-history:hover{
@@ -67,9 +86,10 @@
     display: none;
     position: absolute;
     top: 50px;
-    width: 25%;
-    right: 25%;
+    width: 20%;
+    right: 20%;
     padding: 10px;
+    z-index: 2;
 }
 
 .theme:hover + .hide-theme{
@@ -78,16 +98,13 @@
 
 .hide-theme:hover{
     display: block;
+
 }
 
-.but-clean{
+.head-but{
     background: none;
     border: none;
     position: bottom;
     font-size: 15px;
     width: 100%;
-}
-
-.credit-header{
-    grid-template-columns: 1fr 1fr;
 }

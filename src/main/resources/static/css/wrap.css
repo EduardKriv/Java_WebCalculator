@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
+
+.slider {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  min-width: 450px;
+  background: var(--back-container-color);
+  overflow: hidden;
+}
+
+.slider > input[type="radio"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+.web-calc {
+  position: absolute;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  left: -100%;
+  transition: 1s;
+}
+
+.credit-calc {
+  position: absolute;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  left: 0%;
+  transition: 1s;
+}
+
+.deposit-calc {
+  position: absolute;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  left: 100%;
+  transition: 1s;
+}
+
+#webCalc:checked ~ .header>label[for="webCalc"] {
+  color: #00FF7F;
+  transition: 2s;
+}
+
+#webCalc:checked ~ .web-calc {
+  left: 0;
+  transition: 1s;
+}
+
+#webCalc:checked ~ .credit-calc {
+  left: 100%;
+  transition: 1s;
+}
+
+#webCalc:checked ~ .deposit-calc {
+  left: 200%;
+  transition: 1s;
+}
+
+#creditCalc:checked ~ .header>label[for="creditCalc"] {
+  color: #00FF7F;
+  transition: 2s;
+}
+
+#creditCalc:checked ~ .credit-calc {
+  left: 0;
+  transition: 1s;
+}
+
+#creditCalc:checked ~ .deposit-calc {
+  left: 100%;
+  transition: 1s;
+}
+
+#creditCalc:checked ~ .web-calc {
+  left: -100%;
+  transition: 1s;
+}
+
+#depositCalc:checked ~ .header>label[for="depositCalc"] {
+  color: #00FF7F;
+  transition: 2s;
+}
+
+#depositCalc:checked ~ .deposit-calc {
+  left: 0;
+  transition: 1s;
+}
+
+#depositCalc:checked ~ .credit-calc {
+  left: -100%;
+  transition: 1s;
+}
+
+#depositCalc:checked ~ .web-calc {
+  left: -200%;
+  transition: 1s;
+}
+
+
+
+
+

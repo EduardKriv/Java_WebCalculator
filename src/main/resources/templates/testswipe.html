@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="/static/css/interface.css" th:href="@{/css/interface.css}">
+    <link rel="stylesheet" href="/static/css/header.css" th:href="@{/css/header.css}">
+    <link rel="stylesheet" href="/static/css/wrap.css" th:href="@{/css/wrap.css}">
+
+    <script type="text/javascript" src="../static/js/style.js" th:src="@{js/style.js}"></script>
+
+</head>
+<body>
+    <div class="slider">
+        <input type="radio" name="slide-group" id="webCalc" checked="checked"/>
+        <input type="radio" name="slide-group" id="creditCalc"/>
+        <input type="radio" name="slide-group" id="depositCalc"/>
+
+        <div class="header">
+            <label class="head-item" for="webCalc">Calculator</label>
+            <label class="head-item" for="creditCalc">Credit</label>
+            <label class="head-item" for="depositCalc">Deposit</label>
+
+            <label class="head-item theme">Themes</label>
+                <div class="hide-theme">
+                    <button class="head-item head-but" type="submit" onclick="setYellowTextColor()">Theme1</button>
+                    <button class="head-item head-but" type="submit" onclick="setRedTextColor()">Theme2</button>
+                    <button class="head-item head-but" type="submit" onclick="setWhiteTextColor()">Theme3</button>
+                </div>
+            <label class="head-item history">History</label>
+
+            <div class="hide-history">
+                <table class="table" style="width:100%">
+                    <tr th:each="exp : ${expList}">
+                        <td th:utext="${exp}"></td>s
+                    </tr>
+                </table>
+                <button class="head-item head-but" form="form" type="submit" formaction="/clean">Clean</button>
+            </div>
+        </div>
+
+        <div class="web-calc">
+            <div class="container">
+                <div class="calculator">
+                    <div class="interface">
+                        <div class="window">
+                            <p class="disp1" th:text="${test}"></p>
+                        </div>
+
+                        <div class="window">
+                            <p class="disp2" th:text="${result}"></p>
+                        </div>
+
+                        <div class="buttonss">
+                            <button class="buttons other">(</button>
+                            <button class="buttons other">)</button>
+                            <button class="buttons other">x</button>
+                            <button class="buttons ac">AC</button>
+                            <button class="buttons oper">^</button>
+                            <button class="buttons">+/-</button>
+                            <button class="buttons oper">/</button>
+
+                            <button class="buttons func">sin</button>
+                            <button class="buttons func">cos</button>
+                            <button class="buttons func">tan</button>
+                            <button class="buttons num">7</button>
+                            <button class="buttons num">8</button>
+                            <button class="buttons num">9</button>
+                            <button class="buttons oper">*</button>
+
+                            <button class="buttons func">asin</button>
+                            <button class="buttons func">acos</button>
+                            <button class="buttons func">atan</button>
+                            <button class="buttons num">4</button>
+                            <button class="buttons num">5</button>
+                            <button class="buttons num">6</button>
+                            <button class="buttons oper">-</button>
+
+                            <button class="buttons func">log</button>
+                            <button class="buttons func">sqrt</button>
+                            <button class="buttons">mod</button>
+                            <button class="buttons num">1</button>
+                            <button class="buttons num">2</button>
+                            <button class="buttons num">3</button>
+                            <button class="buttons oper">+</button>
+
+                            <button class="buttons func">ln</button>
+                            <button class="buttons">graph</button>
+                            <button class="buttons num">e</button>
+                            <button class="buttons num">0</button>
+                            <button class="buttons num">0</button>
+                            <button class="buttons num">.</button>
+
+                            <button class="buttons eq" form="form" type="submit" formaction="/calc">=</button>
+                            <form method="get" id="form">
+                                <input id="ff" type="hidden" name="calcStr" value="">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="credit-calc">
+
+        </div>
+
+        <div class="deposit-calc">
+            <div><img src="https://dummyimage.com/100x100/5e8cbd/fff.png" alt=""/>
+                <div class="text">أبجد هوز دولور الجلوس امات consectetur، والحسومات. Scaurus نفسه مع عدم وجود ل، وإلا، وأنها تأتي من؟ هو سريع عند الرجل الصالح، هناك، إلى حيث كانت، ولدت، ورفض بعض شجب، تولي أهمية كبيرة، لذلك، من بعض أو كل أي من الحياة، لا أحد لدفعها.</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../static/js/script.js" th:src="@{js/script.js}"></script>
+
+</body>
+</html>
