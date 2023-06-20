@@ -26,7 +26,9 @@
   width: 100%;
   z-index: 1;
   left: -100%;
-  transition: 1s;
+  -transition: 1s;
+  animation-duration: 0.5s;
+  animation: 1s linear 0.5s 1 normal forwards;
 }
 
 .credit-calc {
@@ -50,18 +52,32 @@
 }
 
 #webCalc:checked ~ .header>label[for="webCalc"] {
-  color: #00FF7F;
-  transition: 2s;
+    color: #00FF7F;
+    transform: scale(1.15);
+    transition: 1s;
+}
+
+#webCalc:not(:checked) ~ .header>label[for="webCalc"] {
+    transform: scale(1);
+    transition: 1s;
 }
 
 #webCalc:checked ~ .web-calc {
-  left: 0;
-  transition: 1s;
-}
+    left: 0;
+    transition: 1s;
+    animation-name: bounce;
+    animation-iteration-count: 1;
+    }
+    @keyframes bounce {
+        0% { transform: translateX(0em); }
+        25.00% { transform: translateX(2.00em); }
+        66.00% { transform: translateX(-0.50em); }
+        100.00% { transform: translateX(0.00rem); }
+    }
 
 #webCalc:checked ~ .credit-calc {
-  left: 100%;
-  transition: 1s;
+    left: 100%;
+    transition: 1s;
 }
 
 #webCalc:checked ~ .deposit-calc {
@@ -71,7 +87,13 @@
 
 #creditCalc:checked ~ .header>label[for="creditCalc"] {
   color: #00FF7F;
-  transition: 2s;
+  transform: scale(1.15);
+  transition: 1s;
+}
+
+#creditCalc:not(:checked) ~ .header>label[for="creditCalc"] {
+    transform: scale(1);
+    transition: 1s;
 }
 
 #creditCalc:checked ~ .credit-calc {
@@ -91,7 +113,13 @@
 
 #depositCalc:checked ~ .header>label[for="depositCalc"] {
   color: #00FF7F;
-  transition: 2s;
+  transform: scale(1.15);
+  transition: 1s;
+}
+
+#depositCalc:not(:checked) ~ .header>label[for="depositCalc"] {
+    transform: scale(1);
+    transition: 1s;
 }
 
 #depositCalc:checked ~ .deposit-calc {

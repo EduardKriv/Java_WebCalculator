@@ -1,11 +1,29 @@
-.header{
-    -background: #e3f9ff;
+nav {
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+
+    -background: red;
     -background: #00FF7F;
-    display: grid;
-    color: var(--text-color);
-    text-align: center;
-    font-size: 20px;
-    grid-template-columns: repeat(5, 1fr);
+    -display: grid;
+    -display: flex;
+
+    -position: relative;
+    -width: 820px;
+    -left: 25%;
+    -top: 5%;
+    -color: var(--text-color);
+    -text-align: center;
+    -font-size: 1.2rem;
+    -grid-template-columns: repeat(5, auto);
+    -gap: 5rem;
+    -z-index: 2;
 }
 
 -.head-item{
@@ -19,18 +37,12 @@
 }
 
 .head-item{
-    -background: linear-gradient(rgba(35, 41, 62), rgba(35, 61, 102));
-    background: linear-gradient(to right, rgba(67, 124, 205), #00FF7F);
-
-    -height: 50px;
-    padding-top: 12px;
-    -color: var(--text-color);
-    -cursor:pointer;
-    -text-decoration:none;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -border: 1px solid black;
+    -height: 45px;
+    padding: 1rem;
+    color: #00CED1;
+    cursor:pointer;
     animation: fade 1s easy-in 1s;
-    -opacity: 1;
     }
 
     @keyframes fade {
@@ -43,11 +55,9 @@
 }
 
 .head-item:hover{
-     background: linear-gradient(90deg, #00FF7F 0%, #00CED1 100%);
-     border-top-color: transparent;
-     border-bottom-color: transparent;
-     border-right-color: #00CED1;
-     border-left-color: #00FF7F;
+     background: linear-gradient(90deg, #00FF7F 0%, #00CED1 60%);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
 }
 
 .hide-history:hover{
@@ -59,10 +69,10 @@
 }
 
 .hide-history{
-    background: rgba(35, 61, 102);
+    -background: rgba(35, 61, 102);
     display: none;
     position: absolute;
-    top: 50px;
+    top: 45px;
     width: 20%;
     right: 0%;
     padding: 10px;
@@ -79,20 +89,21 @@
     padding: 0px;
 }
 
-.hide-theme{
+.hide-theme > .head-item {
     background: rgba(35, 61, 102);
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+
+    -grid-template-rows: 1fr 1fr;
     display: none;
     position: absolute;
-    top: 50px;
-    width: 20%;
-    right: 20%;
-    padding: 10px;
-    z-index: 2;
+    -top: 45px;
+    -width: 20%;
+    -right: 20%;
+    -padding: 5px;
+    z-index: 0;
 }
 
 .theme:hover + .hide-theme{
+    transition: 1s;
     display: block;
 }
 
@@ -104,7 +115,17 @@
 .head-but{
     background: none;
     border: none;
-    position: bottom;
     font-size: 15px;
     width: 100%;
+}
+
+-.active-line {
+    position: absolute;
+    background: #00FF7F;
+    border-radius: 5rem;
+    height: 3px;
+    left: 0%;
+    bottom: 0px;
+    width: 80%;
+    left: 10%;
 }
