@@ -3,45 +3,40 @@
   --back-container-color: #e3f9ff;
 }
 
-html {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: Trebuchet MS, sans-serif, bold;
-}
-
-body {
-  height: 100%;
-  width: 100%;
-}
 
 .container {
-    width: 100%;
+    background: none;
+    position: relative;
+    width: 100vw;
     height: 100vh;
-    display: grid;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .calculator{
-    display: flex;
-    grid-template-columns: 600px 200px;
+    position: relative;
 }
 
 .interface{
+    position: relative;
     display: grid;
     width: 600px;
     height: 500px;
+    min-width: 400px;
+    min-height: 300px;
     background: linear-gradient(rgba(35, 41, 62, 50), rgba(35, 61, 102, 50));
     grid-template-rows: 2fr 1fr 4fr;
     padding: 10px;
     gap: 10px;
     border-radius: 15px;
     word-break: break-all;
+    z-index: 1;
+  	box-shadow: 2px 2px 15px 1px rgba(25, 25, 25, 1);
 }
 
 .window{
+    position: relative;
     background: linear-gradient(rgba(35, 41, 62, 50), rgba(35, 61, 102, 50)) padding-box,
              linear-gradient(to right, #00FF7F, #00CED1) border-box;
     border-radius: 10px;
@@ -53,12 +48,10 @@ body {
 
 .disp1 {
     padding-top: 50px;
-    padding-bottom: 10px;
 }
 
 .disp2 {
     padding-top: 20px;
-    padding-bottom: 10px;
 }
 
 .buttonss{
@@ -78,7 +71,7 @@ body {
 
  .buttons{
      background: linear-gradient(rgba(35, 41, 62, 50), rgba(35, 81, 102, 50)) padding-box,
-                 linear-gradient(to right, #00FF7F, #00CED1);
+                 linear-gradient(to right, #00FF7F, #00CED1) border-box;
      border-radius: 9px;
      border: 1px solid transparent;
      font-size: 20px;
@@ -86,8 +79,13 @@ body {
      cursor: pointer;
   }
 
-  .buttons:active {
-     background: #00FF7F;
-  	 transform: scale(0.85);
-  	 box-shadow: 0px 0px 10px 3px  rgba(0, 0, 0, 1);
-  }
+.buttons:active {
+    background: #00FF7F;
+    transform: scale(1.1);
+}
+
+.graph-but {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

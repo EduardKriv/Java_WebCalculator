@@ -1,131 +1,182 @@
-nav {
-    padding: 3rem;
-    display: flex;
-    justify-content: center;
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Trebuchet MS, sans-serif, bold;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    user-select: none;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+}
+
+.slider>input {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+.slider {
+    background: #EBECF4;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    min-width: 450px;
+    -background: var(--back-container-color);
+    overflow: hidden;
 }
 
 .header {
-    padding: 3rem;
+    background: linear-gradient(rgb(29, 38, 51) 0%, rgb(19, 48, 81) 100%);
+    color: white;
+    height: 100%;
     display: flex;
     justify-content: center;
-
-    -background: red;
-    -background: #00FF7F;
-    -display: grid;
-    -display: flex;
-
-    -position: relative;
-    -width: 820px;
-    -left: 25%;
-    -top: 5%;
-    -color: var(--text-color);
-    -text-align: center;
-    -font-size: 1.2rem;
-    -grid-template-columns: repeat(5, auto);
-    -gap: 5rem;
-    -z-index: 2;
+    align-items: center;
 }
 
--.head-item{
-    background: linear-gradient(rgba(35, 41, 62), rgba(35, 61, 102));
-    border: none;
-    height: 50px;
-    padding-top: 12px;
-    color: var(--text-color);
-    cursor:pointer;
-    text-decoration:none;
-}
-
-.head-item{
-    -border: 1px solid black;
-    -height: 45px;
+.head-item {
+    background: rgb(24, 43, 66);
+    border: 1px solid;
+    border-radius: 5px;
+    display: flex;
     padding: 1rem;
-    color: #00CED1;
+    z-index: 1;
     cursor:pointer;
-    animation: fade 1s easy-in 1s;
-    }
-
-    @keyframes fade {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
+    font-size: 2rem;
 }
 
-.head-item:hover{
-     background: linear-gradient(90deg, #00FF7F 0%, #00CED1 60%);
-     -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent;
+input[type="radio"]:checked ~ .header>label {
+    font-size: 1.2rem;
 }
 
-.hide-history:hover{
-    border: none;
+input[type="radio"]:checked ~ .header {
+    height: 200px;
+    min-height: 200px;
+    transition: 1.5s;
 }
 
-.history:hover + .hide-history{
-    display: block;
-}
-
-.hide-history{
-    -background: rgba(35, 61, 102);
-    display: none;
-    position: absolute;
-    top: 45px;
-    width: 20%;
-    right: 0%;
-    padding: 10px;
+#webCalc:checked ~ .header>label[for="webCalc"] {
+    color: #00FF7F;
+    transform: scale(1.2);
     z-index: 2;
-}
-
-.hide-history:hover{
-    display: block;
-}
-
-.table{
-    font-size: 15px;
-    text-align: left;
-    padding: 0px;
-}
-
-.hide-theme > .head-item {
-    background: rgba(35, 61, 102);
-
-    -grid-template-rows: 1fr 1fr;
-    display: none;
-    position: absolute;
-    -top: 45px;
-    -width: 20%;
-    -right: 20%;
-    -padding: 5px;
-    z-index: 0;
-}
-
-.theme:hover + .hide-theme{
     transition: 1s;
-    display: block;
 }
 
-.hide-theme:hover{
-    display: block;
-
+#webCalc:not(:checked) ~ .header>label[for="webCalc"] {
+    transform: scale(1);
+    transition: 1s;
 }
 
-.head-but{
+#creditCalc:checked ~ .header>label[for="creditCalc"] {
+    color: #00FF7F;
+    transform: scale(1.2);
+    z-index: 2;
+    transition: 1s;
+}
+
+#creditCalc:not(:checked) ~ .header>label[for="creditCalc"] {
+    transform: scale(1);
+    transition: 1s;
+}
+
+#depositCalc:checked ~ .header>label[for="depositCalc"] {
+    color: #00FF7F;
+    transform: scale(1.2);
+    z-index: 2;
+    transition: 1s;
+}
+
+#depositCalc:not(:checked) ~ .header>label[for="depositCalc"] {
+    transform: scale(1);
+    transition: 1s;
+}
+
+.hide {
+    justify-content: center;
+    position: relative;
+}
+
+.hide>.hide-theme {
+    position: absolute;
+    display: none;
+    top: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.head-but {
+    position: relative;
     background: none;
     border: none;
-    font-size: 15px;
     width: 100%;
+    font-size: 1.2rem;
+    justify-content: center;
+    padding: 0.6rem;
+    color: white;
 }
 
--.active-line {
-    position: absolute;
-    background: #00FF7F;
-    border-radius: 5rem;
-    height: 3px;
-    left: 0%;
-    bottom: 0px;
-    width: 80%;
-    left: 10%;
+.hide:hover .hide-theme {
+    display: block;
+}
+
+.head-item:hover {
+    color: #00CED1;
+    transition: 1s;
+}
+
+input[type="radio"]:checked ~ .header>label>a[class="hide-theme"]>.head-but {
+    font-size: 0.95rem;
+}
+
+.credit-calc>.container {
+    display: grid;
+    grid-template-columns: 700px;
+    grid-template-rows: 500px 220px;
+    gap: 5px;
+}
+
+.credit-input, .credit-output {
+    display: grid;
+    grid-template-columns: 1.3fr 2fr;
+    grid-auto-rows: 30px;
+    padding: 30px;
+    gap: 20px;
+    font-size: 18px;
+
+    -position: relative;
+    top: 25%;
+    -grid-template-rows: repeat(5, 1fr);
+    -display: flex;
+    -background: red;
+    -position: relative;
+    -justify-content: center;
+    -align-items: center;
+    text-align: left;
+    -margin-top: 0px;
+}
+
+.box-center {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    font-size: 20px;
+    text-align: center;
+}
+
+..credit-input>label>input:checked {
+    -display: none;
+    background: red;
+    transform: scale(2.5);
+    transition: 2s;
+    -position: relative;
+    -grid-rows-start: 1;
+    -grid-rows-end: 2;
 }

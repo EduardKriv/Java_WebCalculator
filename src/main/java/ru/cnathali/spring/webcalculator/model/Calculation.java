@@ -5,6 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Stack;
 
 public class Calculation extends Lexeme {
+    private final PolishNotation rpn = new PolishNotation();
+
 
     public double calculate(@NotNull Stack<String> stack, double x) {
         Stack<Double> doubleStack = new Stack<>();
@@ -26,8 +28,11 @@ public class Calculation extends Lexeme {
         return calculate(stack, 0);
     }
 
+    public double calculate(@NotNull String expression, double x) {
+        return calculate(rpn.convert(expression), x);
+    }
+
     public double calculate(@NotNull String expression) {
-        PolishNotation rpn = new PolishNotation();
         return calculate(rpn.convert(expression));
     }
 

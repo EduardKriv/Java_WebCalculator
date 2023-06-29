@@ -19,12 +19,13 @@ public class FirstController {
     @GetMapping("/calc")
     public String calculate(@RequestParam(name = "calcStr") String expression, @NotNull Model model) {
         var z = calculator.calculate(expression);
-        History.save(expression);
-        var expList = History.getHistory();
-        model.addAttribute("test", expression);
         model.addAttribute("result", z);
 
-        model.addAttribute("expList", expList);
+//        History.save(expression);
+//        var expList = History.getHistory();
+//        model.addAttribute("test", expression);
+
+//        model.addAttribute("expList", expList);
 
         return "testswipe";
     }
