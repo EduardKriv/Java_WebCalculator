@@ -1,6 +1,7 @@
 package ru.cnathali.spring.webcalculator.model;
 
 import org.springframework.web.bind.annotation.*;
+import ru.cnathali.spring.webcalculator.service.History;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ public class UserController {
     public double getDouble(@RequestParam(name = "expr") String str,
                             @RequestParam(defaultValue = "0.0", required = false, name = "x") Double x) {
 
-        System.out.println(str);
+        History.save(str);
         return calculator.calculate(str, x);
     }
 
@@ -50,7 +51,7 @@ public class UserController {
     }
 
     @GetMapping("/credit")
-    public List<Double> getCreditResult(@RequestParam(name = "sum") double sum,
+    public List<List<Double>> getCreditResult(@RequestParam(name = "sum") double sum,
                                   @RequestParam(name = "period") int period,
                                   @RequestParam(name = "percent") double percent) {
 

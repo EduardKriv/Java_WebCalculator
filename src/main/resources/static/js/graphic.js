@@ -10,13 +10,13 @@ function roundDataX(data, accuracy) {
     }
     return data;
 }
+
 var graphic = new Chart(graphView);
 
 function drawGraphPoints(expr, min, max, step) {
     if (expr == "") return;
 
     graphView.clearRect(0, 0, modelGraph.width, modelGraph.height);
-//    graphView.restore();
     graphic.destroy();
 
     getGraphPoints(expr, min, max, step).then((resp) => {
@@ -30,10 +30,6 @@ function drawGraphPoints(expr, min, max, step) {
                           options: graphOptions
         });
     });
-
-
-//    graphView.update();
-//    document.getElementById('graph-area').appendChild(modelGraph);
 }
 
 function clearGraph() {

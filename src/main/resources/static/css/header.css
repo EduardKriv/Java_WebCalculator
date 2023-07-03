@@ -137,23 +137,22 @@ input[type="radio"]:checked ~ .header>label>a[class="hide-theme"]>.head-but {
     font-size: 0.95rem;
 }
 
-.credit-calc>.container {
-    display: grid;
-    grid-template-columns: 700px;
-    grid-template-rows: 500px 220px;
-    gap: 5px;
+.credit-calc {
+    align-items: center;
+    justify-content: center;
 }
 
-.credit-input, .credit-output {
+
+.credit-input {
     display: grid;
     grid-template-columns: 1.3fr 2fr;
-    grid-auto-rows: 30px;
+    -grid-auto-rows: 25px;
     padding: 30px;
-    gap: 20px;
+    gap: 15px;
     font-size: 18px;
 
-    -position: relative;
-    top: 25%;
+    position: absolute;
+    -top: 50%;
     -grid-template-rows: repeat(5, 1fr);
     -display: flex;
     -background: red;
@@ -171,12 +170,68 @@ input[type="radio"]:checked ~ .header>label>a[class="hide-theme"]>.head-but {
     text-align: center;
 }
 
-..credit-input>label>input:checked {
-    -display: none;
+.#paymentType1:checked ~ label[for="pay"] {
+    display: none;
     background: red;
     transform: scale(2.5);
     transition: 2s;
     -position: relative;
     -grid-rows-start: 1;
     -grid-rows-end: 2;
+}
+
+.table-scroll {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    -background: red;
+    max-height: 200px;
+    display: block;
+    overflow: auto;
+    max-width: 100%;
+    text-align: center;
+}
+
+-#table>tr {
+    background: green;
+    -padding: 30px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.table-scroll table {
+    width: 800px;
+    table-layout: fixed;
+    border: none;
+}
+.table-scroll thead th {
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    padding: 10px 15px;
+    -background: #d8d8d8;
+    font-size: 14px;
+    -border-left: 1px solid #ddd;
+    -border-right: 1px solid #ddd;
+}
+.table-scroll tbody td {
+    text-align: center;
+    -border-left: 1px solid #ddd;
+    -border-right: 1px solid #ddd;
+    padding: 10px 15px;
+    font-size: 14px;
+    vertical-align: top;
+}
+.table-scroll tbody tr:nth-child(even){
+    -background: #f3f3f3;
+}
+
+/* Стили для скролла */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
 }

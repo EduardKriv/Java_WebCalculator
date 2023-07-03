@@ -1,14 +1,67 @@
 
-let table = document.createElement('table');
-let thead = document.createElement('thead');
-let tbody = document.createElement('tbody');
 
-table.appendChild(tbody);
+var tableData = [
+    {
+        month: "1",
+        pay: "1000",
+        main: "200",
+        percent: "150",
+        rest: "400"
+    },
+    {
+        month: "2",
+        pay: "1000",
+        main: "200",
+        percent: "150",
+        rest: "400"
+    }
+]
 
-document.getElementById('his-table').appendChild(table);
 
-let row_2 = document.createElement('tr');
-let row_2_data_1 = document.createElement('td');
-row_2_data_1.innerHTML = "7*3";
-row_2.appendChild(row_2_data_1);
-tbody.appendChild(row_2);
+getCreditResult(10000, 2, 12.4).then((resp) => {
+        console.log(resp);
+//        totalPercent.value = resp[1];
+//        totalSum.value = resp[2];
+
+
+
+//            out.textContent = resp;
+    }, () => {
+            out.textContent = "Invalid input";
+    });
+
+
+
+
+
+//for (var i = 0; i < 21; i++) {
+//		var tr = document.createElement('tr');
+//
+//
+//
+//		for (var j = 0; j < 1; j++) {
+//			var td = document.createElement('td');
+//			var td2 = document.createElement('td');
+//            var td3 = document.createElement('td');
+//            var td4 = document.createElement('td');
+//            var td5 = document.createElement('td');
+//
+//
+//			td.textContent = "5*5";
+//			td2.textContent = "sin(x)";
+//            td3.textContent = "cos(x";
+//            td4.textContent = "2+1";
+//            td5.textContent = "atan(12)";
+//
+//			tr.appendChild(td);
+//			tr.appendChild(td2);
+//			tr.appendChild(td3);
+//			tr.appendChild(td4);
+//			tr.appendChild(td5);
+//
+//		}
+//
+//		table.appendChild(tr);
+//
+////    document.expList.innerHTML = ["4+5"];
+//}

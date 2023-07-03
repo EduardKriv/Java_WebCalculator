@@ -5,8 +5,8 @@ import java.util.List;
 
 public class CreditCalculator {
 
-    public List<Double> calculate(double sum, int period, double percent) {
-        List<Double> result = new ArrayList<>();
+    public List<List<Double>> calculate(double sum, int period, double percent) {
+        List<List<Double>> result = new ArrayList<>();
         period *= 12;
         percent = percent / 12. / 100.;
 
@@ -15,24 +15,38 @@ public class CreditCalculator {
 
         double totalDuty = round(payment) * period;
 
-        result.add(round(payment));
-        result.add(round(totalDuty - sum));
-        result.add(round(totalDuty));
+//        result.add(List.of(round(payment)));
+//        result.add(round(totalDuty - sum));
+//        result.add(round(totalDuty));
+
+
+        double perMonth = 12.4 / (100. * 12.);
+
+        for (int i = 0; i < period; i++) {
+
+            System.out.println(
+                    round(payment) + " " +
+                            round(payment - sum * perMonth) + " " +
+                            round(sum * perMonth) + " " +
+                            round(sum - (payment - sum * perMonth)));
+
+
+            result.add(List.of((double) (i + 1),
+                    round(payment),
+                    round(payment - sum * perMonth),
+                    round(sum * perMonth),
+                    round(sum - (payment - sum * perMonth))));
+
+            sum -= round(payment - round(sum * perMonth));
+
+
+        }
+
+//        System.out.println(round(payment) + " " + round(totalDuty - sum) + " " + round(totalDuty));
+
+
 
         return result;
-
-
-//        double sum = std::get<input::START_SUM>(value);
-//        double period = std::get<input::PERIOD>(value);
-//        double percent = std::get<input::PERCENT>(value) / 12 / 100;
-//
-//        double payment = sum * (percent * pow(1 + percent, period) /
-//                (pow(1 + percent, period) - 1));
-//
-//        double total_duty = myRoundf(payment) * period;
-//
-//        return std::vector<double>{myRoundf(payment), myRoundf(total_duty - sum),
-//                myRoundf(total_duty)};
 
     }
 

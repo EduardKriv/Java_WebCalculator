@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
 
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.5.1/math.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.5.1/math.js"></script>
 
     <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <link rel="stylesheet" href="/static/css/interface.css" th:href="@{/css/interface.css}">
@@ -141,9 +141,8 @@
         </div>
 
         <div class="wrapper credit-calc">
-            <div class="container">
 
-                <div class="credit-input window">
+            <div class="credit-input window">
                     <p class="box-center">Условия кредита</p>
 
                     <label for="credit-sum">Сумма кредита</label><input type="number" id="credit-sum">
@@ -159,21 +158,46 @@
                     </label>
 
                     <button id="credit-result" class="buttons box-center" onclick="calcCredit()">Расчитать</button>
+
+<!--                    <div name="out" class="credit-output window">-->
+                        <label for="pay">Ежемесячный платеж</label><input readonly type="number" id="pay">
+                        <label for="percent">Начисленные проценты</label><input readonly type="number" id="percent">
+                        <label for="totalSum">Долг + проценты</label><input readonly type="number" id="totalSum">
+<!--                    </div>-->
+
+
+<!--                        <table id="table" class="table window" style="width:100%">-->
+
+<!--                            <tr th:each="exp : ${expList}">-->
+<!--                                <td th:utext="${exp}"></td>-->
+<!--                            </tr>-->
+<!--                        </table>-->
+
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+
+                            </thead>
+                        </table>
+
+                        <table>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
                 </div>
 
-                <div class="credit-output window">
-                    <label for="pay">Ежемесячный платеж</label><input readonly type="number" id="pay">
-                    <label for="percent">Начисленные проценты</label><input readonly type="number" id="percent">
-                    <label for="totalSum">Долг + проценты</label><input readonly type="number" id="totalSum">
-                </div>
-
-
-            </div>
         </div>
 
 
 
     </div>
+
+
+    <script type="text/javascript" src="../static/js/history_generation.js" th:src="@{js/history_generation.js}"></script>
 
     <script type="text/javascript" src="../static/js/graphic.js" th:src="@{js/graphic.js}"></script>
 
