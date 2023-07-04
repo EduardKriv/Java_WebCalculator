@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CreditCalculator {
 
-    public List<List<Double>> calculate(double sum, int period, double percent) {
+    public List<List<Double>> calculateAnnuity(double sum, int period, double percent) {
         List<List<Double>> result = new ArrayList<>();
         period *= 12;
         percent = percent / 12. / 100.;
@@ -13,41 +13,37 @@ public class CreditCalculator {
         double payment = sum * (percent * Math.pow(1 + percent, period) /
                 (Math.pow(1 + percent, period) - 1));
 
-        double totalDuty = round(payment) * period;
+        for (int i = 0; i < period; i++) {
+            result.add(List.of((double) (i + 1),
+                    round(payment),
+                    round(payment - sum * percent),
+                    round(sum * percent),
+                    round(sum - (payment - sum * percent))));
 
-//        result.add(List.of(round(payment)));
-//        result.add(round(totalDuty - sum));
-//        result.add(round(totalDuty));
+            sum -= round(payment - round(sum * percent));
+        }
 
+        return result;
+    }
 
-        double perMonth = 12.4 / (100. * 12.);
+    public List<List<Double>> calculateDifferent(double sum, int period, double percent) {
+        List<List<Double>> result = new ArrayList<>();
+        period *= 12;
+
+        double paymentPerMonth = sum / period;
 
         for (int i = 0; i < period; i++) {
-
-            System.out.println(
-                    round(payment) + " " +
-                            round(payment - sum * perMonth) + " " +
-                            round(sum * perMonth) + " " +
-                            round(sum - (payment - sum * perMonth)));
-
+            double remainder = sum - paymentPerMonth * i;
+            double payment = paymentPerMonth + remainder * percent / 100. / 12.;
 
             result.add(List.of((double) (i + 1),
                     round(payment),
-                    round(payment - sum * perMonth),
-                    round(sum * perMonth),
-                    round(sum - (payment - sum * perMonth))));
-
-            sum -= round(payment - round(sum * perMonth));
-
-
+                    round(paymentPerMonth),
+                    round(payment - paymentPerMonth),
+                    round(remainder - paymentPerMonth)));
         }
 
-//        System.out.println(round(payment) + " " + round(totalDuty - sum) + " " + round(totalDuty));
-
-
-
         return result;
-
     }
 
     private double round(double value) {

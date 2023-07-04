@@ -17,23 +17,6 @@ var tableData = [
     }
 ]
 
-
-getCreditResult(10000, 2, 12.4).then((resp) => {
-        console.log(resp);
-//        totalPercent.value = resp[1];
-//        totalSum.value = resp[2];
-
-
-
-//            out.textContent = resp;
-    }, () => {
-            out.textContent = "Invalid input";
-    });
-
-
-
-
-
 //for (var i = 0; i < 21; i++) {
 //		var tr = document.createElement('tr');
 //

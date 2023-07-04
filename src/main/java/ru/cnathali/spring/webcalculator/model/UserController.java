@@ -55,6 +55,6 @@ public class UserController {
                                   @RequestParam(name = "period") int period,
                                   @RequestParam(name = "percent") double percent) {
 
-        return creditCalculator.calculate(sum, period, percent);
+        return creditCalculator.calculateDifferent(sum, period, percent);
     }
 }

@@ -184,17 +184,10 @@ input[type="radio"]:checked ~ .header>label>a[class="hide-theme"]>.head-but {
     grid-column-start: 1;
     grid-column-end: 3;
     -background: red;
-    max-height: 200px;
+    max-height: 300px;
     display: block;
     overflow: auto;
     max-width: 100%;
-    text-align: center;
-}
-
--#table>tr {
-    background: green;
-    -padding: 30px;
-    margin-left: 20px;
     text-align: center;
 }
 
@@ -203,6 +196,7 @@ input[type="radio"]:checked ~ .header>label>a[class="hide-theme"]>.head-but {
     table-layout: fixed;
     border: none;
 }
+
 .table-scroll thead th {
     font-weight: bold;
     text-align: center;
@@ -230,8 +224,8 @@ input[type="radio"]:checked ~ .header>label>a[class="hide-theme"]>.head-but {
     width: 6px;
 }
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: inset 0px 0px 6px #00CED1;
 }
 ::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+    box-shadow: inset 0px 0px 6px #00FF7F;
 }

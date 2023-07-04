@@ -33,10 +33,6 @@ function drawGraphPoints(expr, min, max, step) {
 }
 
 function clearGraph() {
-//    console.log("CLEAR!");
     graphView.clearRect(0, 0, modelGraph.width, modelGraph.height);
-//    graphView.restore();
-//
-//    document.getElementById('graph-area').removeChild(modelGraph);
     graphic.destroy();
 }

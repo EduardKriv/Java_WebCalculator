@@ -159,29 +159,23 @@
 
                     <button id="credit-result" class="buttons box-center" onclick="calcCredit()">Расчитать</button>
 
-<!--                    <div name="out" class="credit-output window">-->
                         <label for="pay">Ежемесячный платеж</label><input readonly type="number" id="pay">
                         <label for="percent">Начисленные проценты</label><input readonly type="number" id="percent">
                         <label for="totalSum">Долг + проценты</label><input readonly type="number" id="totalSum">
-<!--                    </div>-->
 
-
-<!--                        <table id="table" class="table window" style="width:100%">-->
-
-<!--                            <tr th:each="exp : ${expList}">-->
-<!--                                <td th:utext="${exp}"></td>-->
-<!--                            </tr>-->
-<!--                        </table>-->
 
                     <div class="table-scroll">
                         <table>
                             <thead>
+
+
 
                             </thead>
                         </table>
 
                         <table>
                             <tbody>
+
 
                             </tbody>
                         </table>
@@ -192,8 +186,6 @@
 
         </div>
 
-
-
     </div>
 
 
@@ -201,8 +193,11 @@
 
     <script type="text/javascript" src="../static/js/graphic.js" th:src="@{js/graphic.js}"></script>
 
+    <script type="text/javascript" src="../static/js/credit_calc.js" th:src="@{js/credit_calc.js}"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
     <script type="text/javascript" src="../static/js/button_actions.js" th:src="@{js/button_actions.js}"></script>
+
 
 </body>
 </html>
