@@ -15,21 +15,19 @@ function clearTable() {
     table.innerHTML = '';
 }
 
-function calcCredit() {
+function tableHeadGenerate() {
     tableHead.innerHTML = `
-           <tr>
-             <th>Месяц</th>
-             <th>Сумма платежа</th>
-             <th>Платеж по основному долгу</th>
-             <th>Платеж по процентам</th>
-             <th>Остаток долга</th>
-           </tr>`;
+        <tr>
+            <th>Месяц</th>
+            <th>Сумма платежа</th>
+            <th>Платеж по основному долгу</th>
+            <th>Платеж по процентам</th>
+            <th>Остаток долга</th>
+        </tr>`;
+}
 
-    getCreditResult(sum.value, period.value, percent.value).then((resp) => {
-        console.log(resp);
-
-        tableBody.innerHTML = '';
-
+function tableBodyGenerate(resp) {
+    tableBody.innerHTML = '';
         tableBody.innerHTML += resp
             .map(n => `
                 <tr>
@@ -40,11 +38,21 @@ function calcCredit() {
                     <td>${n[4]}</td>
                 </tr>`)
             .join('');
+}
+
+function calcCredit() {
+    const round = (num) => { return Math.round(num * 100) / 100.; };
+
+    tableHeadGenerate();
+
+    getCreditResult(sum.value, period.value, percent.value).then((resp) => {
+        tableBodyGenerate(resp);
 
         pay.value = resp[0][1];
-        totalSum.value = Math.round(resp.reduce((acc, num) => acc + num[1], 0.) * 100) / 100.;
-        totalPercent.value = Math.round((totalSum.value - sum.value) * 100) / 100;
+        totalSum.value = round(resp.reduce((acc, num) => acc + num[1], 0.));
+        totalPercent.value = round(totalSum.value - sum.value);
 
+        drawCreditGraph([sum.value, totalPercent.value]);
     }, () => {
         out.textContent = "Invalid input";
     });

@@ -50,3 +50,33 @@ var graphOptions = {
     responsive: true,
     maintainAspectRatio: false
 };
+
+var creditGraphOptions = {
+    legend: {
+        display: true,
+        position: 'right',
+        labels: {
+            boxWidth: 20,
+            fontSize: 14,
+            fontColor: '#EBECF4'
+        }
+    },
+    scales: {
+        xAxes: [{
+            gridLines: { display: false },
+            ticks: { display: false }
+        }],
+        yAxes: [{
+            gridLines: { display: false },
+            ticks: { display: false }
+        }]
+    }
+};
+
+var creditData = {
+    labels: ["Кредит", "Проценты"],
+    datasets: [{
+        backgroundColor: ["#00FF7F", "#00CED1"],
+        borderWidth: 0
+    }]
+};

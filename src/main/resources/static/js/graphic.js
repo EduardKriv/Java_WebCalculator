@@ -1,5 +1,3 @@
-
-
 var modelGraph = document.getElementById('graphic');
 var graphView = modelGraph.getContext('2d');
 
@@ -16,8 +14,7 @@ var graphic = new Chart(graphView);
 function drawGraphPoints(expr, min, max, step) {
     if (expr == "") return;
 
-    graphView.clearRect(0, 0, modelGraph.width, modelGraph.height);
-    graphic.destroy();
+    clearGraph(graphView, modelGraph, graphic);
 
     getGraphPoints(expr, min, max, step).then((resp) => {
         graphData.labels = roundDataX(resp[0], 3);
@@ -25,14 +22,31 @@ function drawGraphPoints(expr, min, max, step) {
         graphData.datasets[0].label = expr;
 
         graphic = new Chart(graphView, {
-                          type: 'line',
-                          data: graphData,
-                          options: graphOptions
+            type: 'line',
+            data: graphData,
+            options: graphOptions
         });
     });
 }
 
-function clearGraph() {
-    graphView.clearRect(0, 0, modelGraph.width, modelGraph.height);
-    graphic.destroy();
+function clearGraph(view, model, graph) {
+    graphView.clearRect(0, 0, model.width, model.height);
+    graph.destroy();
 }
+
+var graphCreditModel = document.getElementById('credit-graph');
+var graphCreditView = graphCreditModel.getContext('2d');
+var graphCredit = new Chart(graphCreditView);
+
+function drawCreditGraph(yValues) {
+    clearGraph(graphCreditView, graphCreditModel, graphCredit);
+    creditData.datasets[0].data = yValues;
+
+    graphCredit = new Chart(graphCreditView, {
+      type: "pie",
+      data: creditData,
+      options: creditGraphOptions
+    });
+}
+
+

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/static/css/header.css" th:href="@{/css/header.css}">
     <link rel="stylesheet" href="/static/css/dialog.css" th:href="@{/css/dialog.css}">
     <link rel="stylesheet" href="/static/css/wrap.css" th:href="@{/css/wrap.css}">
+    <link rel="stylesheet" href="/static/css/credit.css" th:href="@{/css/credit.css}">
 
 <!--    <script type="text/javascript" src="../static/js/theme_change.js" th:src="@{js/theme_change.js}"></script>-->
 
@@ -146,40 +147,28 @@
                     <p class="box-center">Условия кредита</p>
 
                     <label for="credit-sum">Сумма кредита</label><input type="number" id="credit-sum">
-                    <label for="credit-period">Срок кредита</label><input type="number" id="credit-period">
-                    <label for="credit-percent">Процентная ставка</label><input type="number" id="credit-percent">
-                    <label class="box-center">Тип ежемесячных платежей</label>
-
-                    <label for="paymentType1">Аннуитетные
+                    <label class="pay-type" for="paymentType1">Аннуитетные
                         <input id="paymentType1" type="radio" name="credit-type" checked/>
                     </label>
-                    <label for="payment_type2">Дифференцированные
+                    <label for="credit-period">Срок кредита</label><input type="number" id="credit-period">
+                    <label class="pay-type" for="payment_type2">Дифференцированные
                         <input id="payment_type2" type="radio" name="credit-type"/>
                     </label>
+                    <label for="credit-percent">Процентная ставка</label><input type="number" id="credit-percent">
 
-                    <button id="credit-result" class="buttons box-center" onclick="calcCredit()">Расчитать</button>
+                    <button id="credit-result" class="buttons pay-type" onclick="calcCredit()">Расчитать</button>
+                    <hr class="box-center"/>
 
-                        <label for="pay">Ежемесячный платеж</label><input readonly type="number" id="pay">
-                        <label for="percent">Начисленные проценты</label><input readonly type="number" id="percent">
-                        <label for="totalSum">Долг + проценты</label><input readonly type="number" id="totalSum">
+                    <label for="pay">Ежемесячный платеж</label><input readonly type="number" id="pay">
 
+                    <canvas id="credit-graph"></canvas>
+
+                    <label for="percent">Начисленные проценты</label><input readonly type="number" id="percent">
+                    <label for="totalSum">Долг + проценты</label><input readonly type="number" id="totalSum">
 
                     <div class="table-scroll">
-                        <table>
-                            <thead>
-
-
-
-                            </thead>
-                        </table>
-
-                        <table>
-                            <tbody>
-
-
-                            </tbody>
-                        </table>
-
+                        <table><thead></thead></table>
+                        <table><tbody></tbody></table>
                     </div>
 
                 </div>
