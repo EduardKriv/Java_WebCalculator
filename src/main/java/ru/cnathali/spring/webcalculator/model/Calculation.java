@@ -7,7 +7,6 @@ import java.util.Stack;
 public class Calculation extends Lexeme {
     private final PolishNotation rpn = new PolishNotation();
 
-
     public double calculate(@NotNull Stack<String> stack, double x) {
         Stack<Double> doubleStack = new Stack<>();
 

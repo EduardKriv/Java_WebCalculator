@@ -52,7 +52,9 @@ public class PolishNotation extends Lexeme {
                 .replaceAll("atan", "T")
                 .replaceAll("sin", "s")
                 .replaceAll("cos", "c")
-                .replaceAll("tan", "t");
+                .replaceAll("tan", "t")
+                .replaceAll("(?<=[+-\\/*\\^%\\(])([-])|^([-])", "~")
+                .replaceAll("(?<=[+-\\/*\\^%\\(])([+])|^([+])", "");
     }
 
     private int readNumber(char @NotNull [] str, int pos) {

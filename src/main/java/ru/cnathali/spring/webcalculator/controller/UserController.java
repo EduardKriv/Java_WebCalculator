@@ -1,6 +1,9 @@
-package ru.cnathali.spring.webcalculator.model;
+package ru.cnathali.spring.webcalculator.controller;
 
 import org.springframework.web.bind.annotation.*;
+import ru.cnathali.spring.webcalculator.model.Calculation;
+import ru.cnathali.spring.webcalculator.model.CreditCalculator;
+import ru.cnathali.spring.webcalculator.model.PolishNotation;
 import ru.cnathali.spring.webcalculator.service.History;
 
 import java.util.ArrayList;
@@ -23,8 +26,8 @@ public class UserController {
     @GetMapping("/graph")
     public List<List<Double>> getGraphPoints(@RequestParam(name = "expr") String str,
                                              @RequestParam(defaultValue = "-10", required = false, name = "minX") Double minX,
-                                             @RequestParam(defaultValue = "10", required = false, name = "maxX") Double maxX,
-                                             @RequestParam(defaultValue = "1", required = false, name = "step") Double step) {
+                                             @RequestParam(defaultValue = "10",  required = false, name = "maxX") Double maxX,
+                                             @RequestParam(defaultValue = "1",   required = false, name = "step") Double step) {
 
         PolishNotation polishNotation = new PolishNotation();
         Stack<String> rpn = polishNotation.convert(str);
