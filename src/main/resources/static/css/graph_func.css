@@ -1,0 +1,102 @@
+.graph-box {
+    -display: flex;
+    position: absolute;
+    -background: linear-gradient(rgba(35, 41, 62, 50), rgba(35, 61, 102, 50));
+    -background: red;
+    width: 100%;
+    height: 100%;
+        -width: 600px;
+        -height: 600px;
+    z-index: 1;
+    transform: scale(0.96);
+
+    left: 0%;
+    top: 0%;
+    margin-left: 5px;
+    -transition: 1s;
+    overflow: hidden;
+}
+
+#graphic {
+    -background: green;
+    -display: flex;
+    position: absolute;
+    transform: scale(0.96);
+    left: 0%;
+    top: 0%;
+    wight: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#graph:checked ~ .web-calc {
+    left: -15%;
+    transform: translateY(-15%);
+}
+
+#graph:checked ~ .web-calc>.container>.calculator>.graph-box {
+    transform: scale(1);
+    left: 100%;
+    width: 125%;
+    transition: 1.2s;
+}
+
+#graph:not(:checked) ~ .web-calc>.container>.calculator>.graph-box {
+    left: 0%;
+    transition: 1.2s;
+}
+
+.graph-setting-box {
+    position: absolute;
+    display: grid;
+    -grid-template-columns: repeat(8, 1fr, 2fr);
+    grid-template-columns:  2fr 1fr 2fr 1fr 2fr 1fr 2fr 2fr;
+    -grid-template-columns:  repeat(8, auto);
+    -width: 225%;
+
+    gap: 12px;
+    width: 95%;
+    height: 20%;
+    z-index: 0;
+    left: 0%;
+    top: 30%;
+    margin-top: 5px;
+    transition: 1.2s;
+    padding: 15px;
+    overflow: hidden;
+}
+
+#graph:checked ~ .web-calc>.container>.calculator>.graph-setting-box {
+    top: 100%;
+    width: 226%;
+    transition: 1.2s;
+}
+
+#graph:checked ~ .web-calc>.container>.calculator>.graph-setting-box>button {
+
+    -position: relative;
+    -wight: 200px;
+    -height: 500px;
+
+    -padding: 0px;
+    -align-items: left;
+    -background: red;
+    -transform: scale(0.5);
+    -display: none;
+    -position: relative;
+    -transition: 1.2s;
+    grid-row-end: span 2;
+}
+
+
+#graph:not(:checked) ~ .web-calc>.container>.calculator>.graph-setting-box>input {
+    -position: relative;
+
+    -align-items: left;
+    -background: red;
+    -transform: scale(0.5);
+    -display: none;
+    -position: relative;
+    -transition: 1.2s;
+    -display: flex;
+}

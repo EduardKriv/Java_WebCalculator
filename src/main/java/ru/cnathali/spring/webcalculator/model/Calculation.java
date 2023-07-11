@@ -2,6 +2,9 @@ package ru.cnathali.spring.webcalculator.model;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.Stack;
 
 public class Calculation extends Lexeme {
@@ -33,6 +36,31 @@ public class Calculation extends Lexeme {
 
     public double calculate(@NotNull String expression) {
         return calculate(rpn.convert(expression));
+    }
+
+    public List<List<Double>> calculateGraphPoints(@NotNull String expr, double minX, double maxX, double step) {
+        final double MAX_FUNC_VALUE = 1e6;
+        Stack<String> stackRpn = rpn.convert(expr);
+
+        List<Double> x = new ArrayList<>();
+        List<Double> y = new ArrayList<>();
+
+        for (double xValue = minX; Double.compare(xValue, maxX) <= 0; xValue += step) {
+            Stack<String> rpnTemp = (Stack<String>)stackRpn.clone();
+
+            double yValue = calculate(rpnTemp, xValue);
+
+            if (Math.abs(yValue) > MAX_FUNC_VALUE) continue;
+
+            x.add(xValue);
+            y.add(yValue);
+        }
+
+        List<List<Double>> graphData = new ArrayList<>();
+        graphData.add(x);
+        graphData.add(y);
+
+        return graphData;
     }
 
     private void calcBinary(char operation, @NotNull Stack<Double> doubleStack) {

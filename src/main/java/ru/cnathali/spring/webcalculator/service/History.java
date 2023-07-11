@@ -15,7 +15,7 @@ public class History {
     }
 
     public static void save(String expr) {
-        try(FileWriter writer = new FileWriter(PATH, true);
+        try (FileWriter writer = new FileWriter(PATH, true);
             BufferedWriter wr = new BufferedWriter(writer)) {
             wr.write(expr);
             wr.write("\n");
@@ -26,7 +26,7 @@ public class History {
 
     public static List<String> getHistory() {
         List<String> allHistory = new ArrayList<>();
-        try(FileReader reader = new FileReader(PATH);
+        try (FileReader reader = new FileReader(PATH);
             BufferedReader bufferReader = new BufferedReader(reader)) {
             String line;
             while ((line = bufferReader.readLine()) != null) {
@@ -38,7 +38,7 @@ public class History {
     }
 
     public static void clean() {
-        try(FileWriter writer = new FileWriter(PATH, false);
+        try (FileWriter writer = new FileWriter(PATH, false);
             BufferedWriter wr = new BufferedWriter(writer)) {
             wr.write("\n");
             wr.flush();

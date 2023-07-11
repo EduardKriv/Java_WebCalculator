@@ -31,6 +31,7 @@ var state = {
 function request() {
     getResult(outRez.textContent, xValue.value).then((resp) => {
             out.textContent = resp;
+            createHistoryRow(outRez.textContent);
     }, () => {
             out.textContent = "Invalid input";
     });

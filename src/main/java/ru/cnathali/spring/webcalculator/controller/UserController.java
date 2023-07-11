@@ -3,12 +3,9 @@ package ru.cnathali.spring.webcalculator.controller;
 import org.springframework.web.bind.annotation.*;
 import ru.cnathali.spring.webcalculator.model.Calculation;
 import ru.cnathali.spring.webcalculator.model.CreditCalculator;
-import ru.cnathali.spring.webcalculator.model.PolishNotation;
 import ru.cnathali.spring.webcalculator.service.History;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 @RestController
 public class UserController {
@@ -27,30 +24,9 @@ public class UserController {
     public List<List<Double>> getGraphPoints(@RequestParam(name = "expr") String str,
                                              @RequestParam(defaultValue = "-10", required = false, name = "minX") Double minX,
                                              @RequestParam(defaultValue = "10",  required = false, name = "maxX") Double maxX,
-                                             @RequestParam(defaultValue = "1",   required = false, name = "step") Double step) {
+                                             @RequestParam(defaultValue = "0.2", required = false, name = "step") Double step) {
 
-        PolishNotation polishNotation = new PolishNotation();
-        Stack<String> rpn = polishNotation.convert(str);
-
-        List<Double> x = new ArrayList<>();
-        List<Double> y = new ArrayList<>();
-
-        for (double xValue = minX; Double.compare(xValue, maxX) <= 0; xValue += step) {
-            Stack<String> rpnTemp = (Stack<String>)rpn.clone();
-
-            double yValue = calculator.calculate(rpnTemp, xValue);
-
-            if (Math.abs(yValue) > 1e6) continue;
-
-            x.add(xValue);
-            y.add(yValue);
-        }
-
-        List<List<Double>> chartData = new ArrayList<>();
-        chartData.add(x);
-        chartData.add(y);
-
-        return chartData;
+        return calculator.calculateGraphPoints(str, minX, maxX, step);
     }
 
     @GetMapping("/credit")
@@ -59,5 +35,11 @@ public class UserController {
                                   @RequestParam(name = "percent") double percent) {
 
         return creditCalculator.calculateAnnuity(sum, period, percent);
+    }
+
+    @GetMapping("/history/get")
+    public List<String> getCreditResult() {
+
+        return History.getHistory();
     }
 }

@@ -16,10 +16,15 @@ function drawGraphPoints(expr, min, max, step) {
 
     clearGraph(graphView, modelGraph, graphic);
 
+
     getGraphPoints(expr, min, max, step).then((resp) => {
         graphData.labels = roundDataX(resp[0], 3);
+
         graphData.datasets[0].data = resp[1];
         graphData.datasets[0].label = expr;
+
+        graphOptions.scales.y.min = 0;
+        graphOptions.scales.y.max = 100;
 
         graphic = new Chart(graphView, {
             type: 'line',

@@ -39,3 +39,11 @@ function getCreditResult(sum, period, percent) {
             return resp.data;
         });
 }
+
+function getHistory() {
+    const promise = axios.get(`/history/get`);
+
+    return promise.then((resp) => {
+        return resp.data;
+    });
+}

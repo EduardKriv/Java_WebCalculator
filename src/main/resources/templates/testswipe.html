@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/static/css/dialog.css" th:href="@{/css/dialog.css}">
     <link rel="stylesheet" href="/static/css/wrap.css" th:href="@{/css/wrap.css}">
     <link rel="stylesheet" href="/static/css/credit.css" th:href="@{/css/credit.css}">
+    <link rel="stylesheet" href="/static/css/graph_func.css" th:href="@{/css/graph_func.css}">
+
 
 <!--    <script type="text/javascript" src="../static/js/theme_change.js" th:src="@{js/theme_change.js}"></script>-->
 
@@ -21,7 +23,8 @@
     <script type="text/javascript" src="../static/js/graphic_settings.js" th:src="@{js/graphic_settings.js}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
 
 </head>
 <body>
@@ -67,6 +70,8 @@
 
                             <button id="draw-but" class="buttons">Draw</button>
                             <button id="clear-graph-but" class="buttons" onclick="clearGraph()">Clear</button>
+                            <label for="input-minY">Y min</label><input type="number" id="input-minY" value="">
+                            <label for="input-maxY">Y max</label><input type="number" id="input-maxY" value="">
 
                         </div>
 
