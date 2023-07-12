@@ -50,10 +50,13 @@ public class Calculation extends Lexeme {
 
             double yValue = calculate(rpnTemp, xValue);
 
-            if (Math.abs(yValue) > MAX_FUNC_VALUE) continue;
 
+            if (!Double.isFinite(yValue) || Math.abs(yValue) > MAX_FUNC_VALUE) {
+                y.add(null);
+            } else {
+                y.add(yValue);
+            }
             x.add(xValue);
-            y.add(yValue);
         }
 
         List<List<Double>> graphData = new ArrayList<>();

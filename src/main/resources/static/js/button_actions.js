@@ -94,6 +94,8 @@ document.getElementById('draw-but').addEventListener('click', () => {
     var minX = document.getElementById('input-minX').value;
     var maxX = document.getElementById('input-maxX').value;
     var stepX = document.getElementById('input-step').value;
+    var minY = document.getElementById('input-minY').value;
+    var maxY = document.getElementById('input-maxY').value;
 
-    drawGraphPoints(outRez.textContent, minX, maxX, stepX);
+    drawGraphPoints(outRez.textContent, minX, maxX, stepX, minY, maxY);
 });

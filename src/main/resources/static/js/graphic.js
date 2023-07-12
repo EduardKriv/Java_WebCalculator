@@ -11,20 +11,19 @@ function roundDataX(data, accuracy) {
 
 var graphic = new Chart(graphView);
 
-function drawGraphPoints(expr, min, max, step) {
+function drawGraphPoints(expr, minX, maxX, step, minY, maxY) {
     if (expr == "") return;
 
     clearGraph(graphView, modelGraph, graphic);
 
-
-    getGraphPoints(expr, min, max, step).then((resp) => {
+    getGraphPoints(expr, minX, maxX, step).then((resp) => {
         graphData.labels = roundDataX(resp[0], 3);
 
         graphData.datasets[0].data = resp[1];
         graphData.datasets[0].label = expr;
 
-        graphOptions.scales.y.min = 0;
-        graphOptions.scales.y.max = 100;
+        if (minY != "") graphOptions.scales.y.min = Math.round(minY * 100) / 100;
+        if (maxY != "") graphOptions.scales.y.max = Math.round(maxY * 100) / 100;
 
         graphic = new Chart(graphView, {
             type: 'line',
@@ -48,10 +47,26 @@ function drawCreditGraph(yValues) {
     creditData.datasets[0].data = yValues;
 
     graphCredit = new Chart(graphCreditView, {
-      type: "pie",
-      data: creditData,
-      options: creditGraphOptions
+        type: "pie",
+        data: creditData,
+        options: creditGraphOptions
     });
 }
 
+
+clearGraph(graphView, modelGraph, graphic);
+
+graphData.labels = [1, 5, null, 3, 2];
+
+graphData.datasets[0].data = [0, 1, 2, 3, 4];
+graphData.datasets[0].label = 'test';
+
+//if (minY != "") graphOptions.scales.y.min = Math.round(minY * 100) / 100;
+//if (maxY != "") graphOptions.scales.y.max = Math.round(maxY * 100) / 100;
+
+graphic = new Chart(graphView, {
+    type: 'line',
+    data: graphData,
+    options: graphOptions
+});
 

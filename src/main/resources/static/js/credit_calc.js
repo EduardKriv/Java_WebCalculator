@@ -43,9 +43,8 @@ function tableBodyGenerate(resp) {
 function calcCredit() {
     const round = (num) => { return Math.round(num * 100) / 100.; };
 
-    tableHeadGenerate();
-
     getCreditResult(sum.value, period.value, percent.value).then((resp) => {
+        tableHeadGenerate();
         tableBodyGenerate(resp);
 
         pay.value = resp[0][1];

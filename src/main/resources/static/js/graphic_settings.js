@@ -1,71 +1,32 @@
-
 var graphData = {
     datasets: [{
-        lineTension: 0,
-        fill: false,
         borderColor: '#00FF7F',
         backgroundColor: 'lightblue',
-        pointBorderColor: '#00CED1',
-        pointRadius: 2,
-        pointHoverRadius: 5,
-        pointHitRadius: 10,
-        pointBorderWidth: 5,
-        pointStyle: 'rectRounded',
-        spanGaps: false
+//        pointBorderColor: '#00CED1',
     }]
 };
 
-var graphOptions = {
-    scales: {
-        x: {
-            gridLines: {
-                color: 'grey'
-            },
-            ticks: {
-                fontSize: 13,
-                fontColor: '#EBECF4',
-                maxTicksLimit: 10
-            }
-        },
-        y: {
-            gridLines: {
-                color: 'grey',
-                borderDash: [2, 5],
-            },
-            ticks: {
-                fontSize: 13,
-                fontColor: '#EBECF4',
-                display: true
-            },
-//            min: 0,
-//            max: 10,
-        }
-    },
+var ticksOptions = { size: 13, color: '#EBECF4' };
 
+var graphOptions = {
+    plugins: { legend: { labels: { color: 'white' } } },
+    scales: {
+        x: { ticks: ticksOptions },
+        y: { ticks: ticksOptions, offset: true },
+    },
     spanGaps: false,
-    responsive: true,
     maintainAspectRatio: false
 };
 
 var creditGraphOptions = {
-    legend: {
-        display: true,
-        position: 'right',
-        labels: {
-            boxWidth: 20,
-            fontSize: 14,
-            fontColor: '#EBECF4'
+    plugins: {
+        legend: {
+             display: true,
+             position: 'right',
+             labels: {
+                 color: 'white'
+             }
         }
-    },
-    scales: {
-        xAxes: [{
-            gridLines: { display: false },
-            ticks: { display: false }
-        }],
-        yAxes: [{
-            gridLines: { display: false },
-            ticks: { display: false }
-        }]
     }
 };
 
@@ -76,3 +37,7 @@ var creditData = {
         borderWidth: 0
     }]
 };
+
+
+
+

@@ -30,14 +30,9 @@
 }
 
 .credit-input #credit-graph {
-    display: block;
-    max-width: 250px;
-    color: white;
+    max-width: 370px;
+    max-height: 110px;
     grid-row-end: span 3;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    margin-top: 0px;
 }
 
 .box-center {
@@ -71,12 +66,14 @@
     padding: 10px 15px;
     font-size: 14px;
 }
+
 .table-scroll tbody td {
     text-align: center;
     padding: 10px 15px;
     font-size: 14px;
     vertical-align: top;
 }
+
 .table-scroll tbody tr:nth-child(even){
     -background: #f3f3f3;
 }

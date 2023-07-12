@@ -35,7 +35,7 @@
   	box-shadow: 2px 2px 15px 1px rgba(25, 25, 25, 1);
 }
 
-.window{
+.window {
     position: relative;
     background: linear-gradient(rgba(35, 41, 62, 50), rgba(35, 61, 102, 50)) padding-box,
              linear-gradient(to right, #00FF7F, #00CED1) border-box;
