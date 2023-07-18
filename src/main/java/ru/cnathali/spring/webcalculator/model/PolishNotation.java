@@ -64,6 +64,10 @@ public class PolishNotation extends Lexeme {
         while (lexeme == lexemeType.NUMBER || lexeme == lexemeType.X) {
             number.append(str[pos++]);
             if (str.length <= pos) break;
+            if (str[pos] == 'e' && (str[pos + 1] == '-' || str[pos + 1] == '+')) {
+                number.append(str[pos++]);
+                number.append(str[pos++]);
+            }
             lexeme = getLexemeType(str[pos]);
         }
 

@@ -30,7 +30,7 @@
 }
 
 #graph:checked ~ .web-calc {
-    left: -15%;
+    left: -20%;
     transform: translateY(-15%);
 }
 

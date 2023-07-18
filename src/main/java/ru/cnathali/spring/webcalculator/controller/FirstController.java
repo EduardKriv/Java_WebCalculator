@@ -16,23 +16,23 @@ public class FirstController {
         return "testswipe";
     }
 
-    @GetMapping("/calc")
-    public String calculate(@RequestParam(name = "calcStr") String expression, @NotNull Model model) {
-        var z = calculator.calculate(expression);
-        model.addAttribute("result", z);
-
-//        History.save(expression);
-//        var expList = History.getHistory();
-//        model.addAttribute("test", expression);
+//    @GetMapping("/calc")
+//    public String calculate(@RequestParam(name = "calcStr") String expression, @NotNull Model model) {
+//        var z = calculator.calculate(expression);
+//        model.addAttribute("result", z);
 //
-//        model.addAttribute("expList", expList);
+////        History.save(expression);
+////        var expList = History.getHistory();
+////        model.addAttribute("test", expression);
+////
+////        model.addAttribute("expList", expList);
+//
+//        return "testswipe";
+//    }
 
-        return "testswipe";
-    }
-
-    @GetMapping("/clean")
-    public String cleanHistory() {
-        History.clean();
-        return "main";
-    }
+//    @GetMapping("/clean")
+//    public String cleanHistory() {
+//        History.clean();
+//        return "main";
+//    }
 }

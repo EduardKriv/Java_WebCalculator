@@ -36,24 +36,23 @@
         <input type="checkbox" id="graph"/>
 
         <div class="header">
+
             <label class="head-item" for="webCalc">Calculator</label>
             <label class="head-item" for="creditCalc">Credit</label>
             <label class="head-item" for="depositCalc">Deposit</label>
 
-            <label class="head-item hide">Themes
+            <div class="head-item">Themes
                 <a class="hide-theme">
-                    <button class="head-item head-but" type="submit" onclick="setWhiteTextColor()">Light mode</button>
-                    <button class="head-item head-but" type="submit" onclick="setRedTextColor()">Dark mode</button>
+                    <button class="head-but" type="submit" onclick="setWhiteTextColor()">Light mode</button>
+                    <button class="head-but" type="submit" onclick="setRedTextColor()">Dark mode</button>
                 </a>
-            </label>
+            </div>
 
-            <label class="head-item hide">History
+            <div class="head-item">History
                 <a class="hide-theme">
                     <table class="history-table"></table>
-                    <button class="head-item head-but" form="form" type="submit" formaction="/clean">Clean</button>
                 </a>
-
-            </label>
+            </div>
         </div>
 
         <div class="wrapper web-calc">
@@ -69,7 +68,7 @@
                             <label for="input-step">Step</label><input type="number" id="input-step" value="0.2">
 
                             <button id="draw-but" class="buttons">Draw</button>
-                            <button id="clear-graph-but" class="buttons" onclick="clearGraph()">Clear</button>
+                            <button id="clear-graph-but" class="buttons" onclick="butClearGraph()">Clear</button>
                             <label for="input-minY">Y min</label><input type="number" id="input-minY" value="">
                             <label for="input-maxY">Y max</label><input type="number" id="input-maxY" value="">
 
@@ -92,7 +91,7 @@
                                 <p class="disp2"></p>
                             </div>
 
-                            <div class="buttonss">
+                            <div class="buttons-box">
                                 <button class="buttons other">(</button>
                                 <button class="buttons other">)</button>
                                 <button class="buttons other">x</button>
@@ -128,15 +127,13 @@
                                 <button class="buttons func">ln</button>
                                 <label class="buttons graph-but" for="graph">graph</label>
                                 <button class="buttons num">e</button>
-                                <button class="buttons num">0</button>
-                                <button class="buttons num">0</button>
+                                <button class="buttons num" style="grid-column-end: span 2;">0</button>
                                 <button class="buttons num">.</button>
                                 <button class="buttons eq">=</button>
 
                             </div>
                         </div>
                     </div>
-
 
                 </div>
 
@@ -168,8 +165,7 @@
                     <label for="totalSum">Долг + проценты</label><input readonly type="number" id="totalSum">
 
                     <div class="table-scroll">
-                        <table><thead></thead></table>
-                        <table><tbody></tbody></table>
+                        <table><thead></thead><tbody></tbody></table>
                     </div>
 
                 </div>

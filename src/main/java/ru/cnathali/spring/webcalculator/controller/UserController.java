@@ -1,11 +1,15 @@
 package ru.cnathali.spring.webcalculator.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import ru.cnathali.spring.webcalculator.model.Calculation;
 import ru.cnathali.spring.webcalculator.model.CreditCalculator;
 import ru.cnathali.spring.webcalculator.service.History;
 
 import java.util.List;
+import java.util.prefs.BackingStoreException;
 
 @RestController
 public class UserController {
@@ -16,7 +20,6 @@ public class UserController {
     public double getDouble(@RequestParam(name = "expr") String str,
                             @RequestParam(defaultValue = "0.0", required = false, name = "x") Double x) {
 
-        History.save(str);
         return calculator.calculate(str, x);
     }
 
@@ -38,8 +41,19 @@ public class UserController {
     }
 
     @GetMapping("/history/get")
-    public List<String> getCreditResult() {
-
+    public List<String> getHistory() throws BackingStoreException {
         return History.getHistory();
+    }
+
+    @PostMapping("/history/clean")
+    public void cleanHistory() throws BackingStoreException {
+        History.clean();
+    }
+
+    @PostMapping("/saver")
+    public void saveHistory(@Valid @RequestBody JSONObject str) {
+        String expression = str.get("str").toString();
+//        System.out.println();
+        History.save(expression);
     }
 }

@@ -5,7 +5,7 @@ public class Lexeme {
 
     static protected lexemeType getLexemeType(char ch) {
         return switch (ch) {
-            case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' -> lexemeType.NUMBER;
+            case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', 'e' -> lexemeType.NUMBER;
             case '*', '/', '+', '-', '^', '%' ->  lexemeType.OPERATOR;
             case '('  -> lexemeType.BRACKET_L;
             case ')' ->  lexemeType.BRACKET_R;

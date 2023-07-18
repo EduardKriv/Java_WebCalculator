@@ -54,7 +54,7 @@
     padding-top: 20px;
 }
 
-.buttonss{
+.buttons-box{
     display: grid;
     gap: 3px;
     grid-template-columns: repeat(7, 1fr);

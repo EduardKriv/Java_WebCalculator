@@ -8,10 +8,10 @@ document.querySelectorAll('[name="slide-group"]').forEach((button) => {
 const out = document.querySelector('.disp2');
 const outRez = document.querySelector('.disp1');
 
-var dialog = document.getElementById('dialog');
-var dialogOk = document.getElementById('dialog-ok');
-var dialogCancel = document.getElementById('dialog-cancel');
-var xValue = document.getElementById('input-x');
+const dialog = document.getElementById('dialog');
+const dialogOk = document.getElementById('dialog-ok');
+const dialogCancel = document.getElementById('dialog-cancel');
+const xValue = document.getElementById('input-x');
 
 
 dialogOk.addEventListener('click', () => {
@@ -23,17 +23,18 @@ dialogCancel.addEventListener('click', () => {
     dialog.close();
 });
 
-var state = {
+const state = {
     isNum: false,
     isEq: false
 };
 
 function request() {
     getResult(outRez.textContent, xValue.value).then((resp) => {
-            out.textContent = resp;
-            createHistoryRow(outRez.textContent);
+        out.textContent = resp.toString();
+        createHistoryRow(outRez.textContent);
+        saveHistory(outRez.textContent);
     }, () => {
-            out.textContent = "Invalid input";
+        out.textContent = "Invalid input";
     });
 }
 

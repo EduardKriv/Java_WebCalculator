@@ -1,9 +1,9 @@
-var modelGraph = document.getElementById('graphic');
-var graphView = modelGraph.getContext('2d');
+const modelGraph = document.getElementById('graphic');
+const graphView = modelGraph.getContext('2d');
 
 function roundDataX(data, accuracy) {
-    var coef = Math.pow(10, accuracy);
-    for (var x in data) {
+    const coef = Math.pow(10, accuracy);
+    for (const x in data) {
         data[x] = Math.round(data[x] * coef) / coef;
     }
     return data;
@@ -12,7 +12,7 @@ function roundDataX(data, accuracy) {
 var graphic = new Chart(graphView);
 
 function drawGraphPoints(expr, minX, maxX, step, minY, maxY) {
-    if (expr == "") return;
+    if (expr === "") return;
 
     clearGraph(graphView, modelGraph, graphic);
 
@@ -22,8 +22,8 @@ function drawGraphPoints(expr, minX, maxX, step, minY, maxY) {
         graphData.datasets[0].data = resp[1];
         graphData.datasets[0].label = expr;
 
-        if (minY != "") graphOptions.scales.y.min = Math.round(minY * 100) / 100;
-        if (maxY != "") graphOptions.scales.y.max = Math.round(maxY * 100) / 100;
+        if (minY !== "") graphOptions.scales.y.min = Math.round(minY * 100) / 100;
+        if (maxY !== "") graphOptions.scales.y.max = Math.round(maxY * 100) / 100;
 
         graphic = new Chart(graphView, {
             type: 'line',
@@ -38,9 +38,13 @@ function clearGraph(view, model, graph) {
     graph.destroy();
 }
 
-var graphCreditModel = document.getElementById('credit-graph');
-var graphCreditView = graphCreditModel.getContext('2d');
-var graphCredit = new Chart(graphCreditView);
+function butClearGraph() {
+    clearGraph(graphView, modelGraph, graphic);
+}
+
+const graphCreditModel = document.getElementById('credit-graph');
+const graphCreditView = graphCreditModel.getContext('2d');
+let graphCredit = new Chart(graphCreditView);
 
 function drawCreditGraph(yValues) {
     clearGraph(graphCreditView, graphCreditModel, graphCredit);
@@ -52,21 +56,3 @@ function drawCreditGraph(yValues) {
         options: creditGraphOptions
     });
 }
-
-
-clearGraph(graphView, modelGraph, graphic);
-
-graphData.labels = [1, 5, null, 3, 2];
-
-graphData.datasets[0].data = [0, 1, 2, 3, 4];
-graphData.datasets[0].label = 'test';
-
-//if (minY != "") graphOptions.scales.y.min = Math.round(minY * 100) / 100;
-//if (maxY != "") graphOptions.scales.y.max = Math.round(maxY * 100) / 100;
-
-graphic = new Chart(graphView, {
-    type: 'line',
-    data: graphData,
-    options: graphOptions
-});
-

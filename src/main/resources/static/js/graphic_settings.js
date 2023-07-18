@@ -1,4 +1,4 @@
-var graphData = {
+const graphData = {
     datasets: [{
         borderColor: '#00FF7F',
         backgroundColor: 'lightblue',
@@ -6,9 +6,9 @@ var graphData = {
     }]
 };
 
-var ticksOptions = { size: 13, color: '#EBECF4' };
+const ticksOptions = { size: 13, color: '#EBECF4' };
 
-var graphOptions = {
+const graphOptions = {
     plugins: { legend: { labels: { color: 'white' } } },
     scales: {
         x: { ticks: ticksOptions },
@@ -18,7 +18,7 @@ var graphOptions = {
     maintainAspectRatio: false
 };
 
-var creditGraphOptions = {
+const creditGraphOptions = {
     plugins: {
         legend: {
              display: true,
@@ -30,7 +30,7 @@ var creditGraphOptions = {
     }
 };
 
-var creditData = {
+const creditData = {
     labels: ["Кредит", "Проценты"],
     datasets: [{
         backgroundColor: ["#00FF7F", "#00CED1"],

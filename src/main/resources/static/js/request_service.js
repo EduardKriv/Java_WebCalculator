@@ -47,3 +47,13 @@ function getHistory() {
         return resp.data;
     });
 }
+
+function cleanHistory() {
+    axios.post(`/history/clean`);
+}
+
+function saveHistory(value) {
+    axios.post(`/saver`, {
+        str: value
+    });
+}

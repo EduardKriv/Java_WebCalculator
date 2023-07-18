@@ -1,17 +1,17 @@
-var sum = document.getElementById('credit-sum');
-var period = document.getElementById('credit-period');
-var percent = document.getElementById('credit-percent');
+const sum = document.getElementById('credit-sum');
+const period = document.getElementById('credit-period');
+const percent = document.getElementById('credit-percent');
 
-var pay = document.getElementById('pay');
-var totalPercent = document.getElementById('percent');
-var totalSum = document.getElementById('totalSum');
+const pay = document.getElementById('pay');
+const totalPercent = document.getElementById('percent');
+const totalSum = document.getElementById('totalSum');
 
-var tableHead = document.querySelector('.table-scroll thead');
-var tableBody = document.querySelector('.table-scroll tbody');
+const tableHead = document.querySelector('.table-scroll thead');
+const tableBody = document.querySelector('.table-scroll tbody');
 
 
 function clearTable() {
-    var table = document.querySelector('.table-scroll tbody');
+    const table = document.querySelector('.table-scroll tbody');
     table.innerHTML = '';
 }
 

@@ -9,7 +9,10 @@ html {
 body {
     height: 100%;
     width: 100%;
+    min-width: 800px;
     user-select: none;
+    overflow: hidden;
+
 }
 
 * {
@@ -29,7 +32,7 @@ body {
     position: relative;
     height: 100%;
     width: 100%;
-    min-width: 450px;
+    min-width: 800px;
     -background: var(--back-container-color);
     overflow: hidden;
 }
@@ -41,9 +44,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: height 1.5s;
 }
 
 .head-item {
+    position: relative;
+    justify-content: center;
     background: rgb(24, 43, 66);
     border: 1px solid;
     border-radius: 5px;
@@ -52,60 +58,58 @@ body {
     z-index: 1;
     cursor:pointer;
     font-size: 2rem;
+    transition: font-size 1s, transform 1s, z-index 0.5s;
 }
 
-input[type="radio"]:checked ~ .header>label {
+input[type="radio"]:checked ~ .header>.head-item {
     font-size: 1.2rem;
 }
 
 input[type="radio"]:checked ~ .header {
     height: 200px;
     min-height: 200px;
-    transition: 1.5s;
+}
+
+input[type="radio"]:checked ~ .header>div>a[class="hide-theme"]>.head-but,
+                               .header>div>[class="hide-theme"]>*>.head-but {
+    font-size: 15px;
+}
+
+.input[type="radio"]:checked ~  {
+    font-size: 0.55rem;
 }
 
 #webCalc:checked ~ .header>label[for="webCalc"] {
     color: #00FF7F;
     transform: scale(1.2);
     z-index: 2;
-    transition: 1s;
 }
 
 #webCalc:not(:checked) ~ .header>label[for="webCalc"] {
     transform: scale(1);
-    transition: 1s;
 }
 
 #creditCalc:checked ~ .header>label[for="creditCalc"] {
     color: #00FF7F;
     transform: scale(1.2);
     z-index: 2;
-    transition: 1s;
 }
 
 #creditCalc:not(:checked) ~ .header>label[for="creditCalc"] {
     transform: scale(1);
-    transition: 1s;
 }
 
 #depositCalc:checked ~ .header>label[for="depositCalc"] {
     color: #00FF7F;
     transform: scale(1.2);
     z-index: 2;
-    transition: 1s;
 }
 
 #depositCalc:not(:checked) ~ .header>label[for="depositCalc"] {
     transform: scale(1);
-    transition: 1s;
 }
 
-.hide {
-    justify-content: center;
-    position: relative;
-}
-
-.hide>.hide-theme {
+.head-item .hide-theme {
     position: absolute;
     display: none;
     top: 100%;
@@ -122,50 +126,37 @@ input[type="radio"]:checked ~ .header {
     justify-content: center;
     padding: 0.6rem;
     color: white;
+    margin-top: 5px;
 }
 
-.hide:hover .hide-theme {
+.head-item:hover .hide-theme {
     display: block;
+    -background: linear-gradient(rgb(19, 48, 81) 70%, rgb(29, 48, 81) 100%);
 }
 
-.head-item:hover {
+.head-item:hover, .head-but:hover, .history-table tr td:hover {
     color: #00CED1;
-    -transition: 1s;
-}
-
-input[type="radio"]:checked ~ .header>label>a[class="hide-theme"]>.head-but {
-    font-size: 0.95rem;
 }
 
 .history-table {
     position: relative;
     -background: linear-gradient(to right, #00FF7F, #00CED1);
-    background: linear-gradient(rgb(19, 48, 81) 70%, rgb(29, 48, 81) 100%);
-
+    background: rgb(29, 48, 81);
+    -border-radius: 10px;
+    margin-top: 2px;
     font-size: 14px;
     color: white;
-    -color: #00CED1;
     text-align: left;
     border: none;
     max-height: 250px;
     min-width: 100%;
-
-    -max-width: 300%;
-    overflow-y: auto;
+    max-width: 400px;
+    overflow: auto;
     display: inline-block;
 }
 
 .history-table tr td {
-    -position: relative;
-    -background: green;
     border: none;
-    -max-width: 150%;
     justify-content: center;
-    padding: 0.7rem;
-    -display: block;
-    -overflow-x: scroll;
-}
-
-.history-table tr td:hover{
-    color: #00FF7F;
+    padding: 0.4rem;
 }
