@@ -1,6 +1,8 @@
 :root {
-  --text-color: white;
-  --back-container-color: #e3f9ff;
+    --text-color: white;
+    --back-container-color: #EBECF4;
+    --box-shadow-color: rgba(25, 25, 25, 1);
+    --text-guide-color: black;
 }
 
 
@@ -32,7 +34,7 @@
     border-radius: 15px;
     word-break: break-all;
     z-index: 1;
-  	box-shadow: 2px 2px 15px 1px rgba(25, 25, 25, 1);
+  	box-shadow: 1px 1px 10px 2px var(--box-shadow-color);
 }
 
 .window {
@@ -70,7 +72,7 @@
   }
 
  .buttons{
-     background: linear-gradient(rgba(35, 41, 62, 50), rgba(35, 81, 102, 50)) padding-box,
+     background: linear-gradient(rgba(35, 41, 62, 30), rgba(35, 91, 122, 50)) padding-box,
                  linear-gradient(to right, #00FF7F, #00CED1) border-box;
      border-radius: 9px;
      border: 1px solid transparent;

@@ -31,59 +31,92 @@ const state = {
 function request() {
     getResult(outRez.textContent, xValue.value).then((resp) => {
         out.textContent = resp.toString();
-        createHistoryRow(outRez.textContent);
+        addHistoryRow(outRez.textContent);
         saveHistory(outRez.textContent);
     }, () => {
         out.textContent = "Invalid input";
     });
 }
 
-document.querySelector('.ac').addEventListener('click', () => {
+function clearDisplay() {
     out.textContent = "";
     outRez.textContent = "";
+    state.isEq = false;
+}
+
+document.querySelector('.ac').addEventListener('click', () => {
+    clearDisplay();
 });
 
 document.querySelector('.eq').addEventListener('click', () => {
-    outRez.textContent += out.textContent;
-    out.textContent = '';
+    if (!state.isEq) {
+        outRez.textContent += out.textContent;
+        out.textContent = '';
+    }
 
     if (outRez.textContent.indexOf("x") > -1) {
         dialog.showModal();
     } else {
         request();
     }
+    state.isEq = true;
+    state.isNum = false;
 });
 
 document.querySelectorAll('.num').forEach((button) => {
     button.addEventListener('click', () => {
-         if (!state.isNum) {
+        if (state.isEq) clearDisplay();
+        if (button.textContent === "." && out.textContent.indexOf(".") !== -1) return;
+        if (button.textContent === "e" && out.textContent.indexOf("e") !== -1) return;
+
+        if (!state.isNum) {
             outRez.textContent += out.textContent;
             out.textContent = '';
-         }
-         out.textContent += event.target.textContent;
-         state.isNum = true;
+        }
+        out.textContent += button.textContent;
+        state.isNum = true;
     });
 });
 
 document.querySelectorAll('.oper').forEach((button) => {
     button.addEventListener('click', () => {
+        if (out.textContent.toLowerCase() === "invalid input") clearDisplay();
+
+        if (state.isEq) {
+            outRez.textContent = out.textContent;
+            state.isEq = false;
+        }
          if (state.isNum)
             outRez.textContent += out.textContent;
-         out.textContent = event.target.textContent;
+
+         out.textContent = button.textContent;
          state.isNum = false;
     });
 });
 
 document.querySelectorAll('.func').forEach((button) => {
     button.addEventListener('click', () => {
-        outRez.textContent += out.textContent + event.target.textContent + "(";
+        if (state.isEq) clearDisplay();
+
+        outRez.textContent += out.textContent + button.textContent + "(";
         out.textContent = '';
+    });
+});
+
+document.querySelectorAll('.back').forEach((button) => {
+    button.addEventListener('click', () => {
+        if (out.textContent.length > 0)
+            out.textContent = out.textContent.slice(0, -1);
+        else
+            outRez.textContent = outRez.textContent.slice(0, -1);
     });
 });
 
 document.querySelectorAll('.other').forEach((button) => {
     button.addEventListener('click', () => {
-        outRez.textContent += out.textContent + event.target.textContent;
+        if (state.isEq) clearDisplay();
+
+        outRez.textContent += out.textContent + button.textContent;
         out.textContent = '';
     });
 });
@@ -92,11 +125,11 @@ document.getElementById('draw-but').addEventListener('click', () => {
     outRez.textContent += out.textContent;
     out.textContent = '';
 
-    var minX = document.getElementById('input-minX').value;
-    var maxX = document.getElementById('input-maxX').value;
-    var stepX = document.getElementById('input-step').value;
-    var minY = document.getElementById('input-minY').value;
-    var maxY = document.getElementById('input-maxY').value;
+    const minX = document.getElementById('input-minX').value;
+    const maxX = document.getElementById('input-maxX').value;
+    const stepX = document.getElementById('input-step').value;
+    const minY = document.getElementById('input-minY').value;
+    const maxY = document.getElementById('input-maxY').value;
 
     drawGraphPoints(outRez.textContent, minX, maxX, stepX, minY, maxY);
 });

@@ -16,7 +16,7 @@
     left: 100%;
 }
 
-.deposit-calc {
+.guide {
     left: 200%;
 }
 
@@ -29,7 +29,7 @@
     left: 100%;
 }
 
-#webCalc:checked ~ .deposit-calc {
+#webCalc:checked ~ .guide {
     left: 200%;
 }
 
@@ -38,7 +38,7 @@
     transition: 1.5s;
 }
 
-#creditCalc:checked ~ .deposit-calc {
+#creditCalc:checked ~ .guide {
     left: 100%;
 }
 
@@ -46,15 +46,15 @@
     left: -100%;
 }
 
-#depositCalc:checked ~ .deposit-calc {
+#guide:checked ~ .guide {
     left: 0;
     transition: 1.5s;
 }
 
-#depositCalc:checked ~ .credit-calc {
+#guide:checked ~ .credit-calc {
     left: -100%;
 }
 
-#depositCalc:checked ~ .web-calc {
+#guide:checked ~ .web-calc {
     left: -200%;
 }

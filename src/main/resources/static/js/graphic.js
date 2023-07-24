@@ -9,7 +9,7 @@ function roundDataX(data, accuracy) {
     return data;
 }
 
-var graphic = new Chart(graphView);
+let graphic = new Chart(graphView);
 
 function drawGraphPoints(expr, minX, maxX, step, minY, maxY) {
     if (expr === "") return;

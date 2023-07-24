@@ -28,13 +28,13 @@ body {
 }
 
 .slider {
-    background: #EBECF4;
     position: relative;
     height: 100%;
     width: 100%;
     min-width: 800px;
-    -background: var(--back-container-color);
+    background: var(--back-container-color);
     overflow: hidden;
+    transition: background-color 1s;
 }
 
 .header {
@@ -99,13 +99,13 @@ input[type="radio"]:checked ~ .header>div>a[class="hide-theme"]>.head-but,
     transform: scale(1);
 }
 
-#depositCalc:checked ~ .header>label[for="depositCalc"] {
+#guide:checked ~ .header>label[for="guide"] {
     color: #00FF7F;
     transform: scale(1.2);
     z-index: 2;
 }
 
-#depositCalc:not(:checked) ~ .header>label[for="depositCalc"] {
+#guide:not(:checked) ~ .header>label[for="guide"] {
     transform: scale(1);
 }
 
@@ -131,7 +131,6 @@ input[type="radio"]:checked ~ .header>div>a[class="hide-theme"]>.head-but,
 
 .head-item:hover .hide-theme {
     display: block;
-    -background: linear-gradient(rgb(19, 48, 81) 70%, rgb(29, 48, 81) 100%);
 }
 
 .head-item:hover, .head-but:hover, .history-table tr td:hover {
@@ -140,9 +139,7 @@ input[type="radio"]:checked ~ .header>div>a[class="hide-theme"]>.head-but,
 
 .history-table {
     position: relative;
-    -background: linear-gradient(to right, #00FF7F, #00CED1);
     background: rgb(29, 48, 81);
-    -border-radius: 10px;
     margin-top: 2px;
     font-size: 14px;
     color: white;

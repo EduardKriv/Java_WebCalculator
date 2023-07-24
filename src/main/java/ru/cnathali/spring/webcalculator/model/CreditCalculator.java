@@ -1,13 +1,15 @@
 package ru.cnathali.spring.webcalculator.model;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CreditCalculator {
 
     public List<List<Double>> calculateAnnuity(double sum, int period, double percent) {
         List<List<Double>> result = new ArrayList<>();
-        period *= 12;
         percent = percent / 12. / 100.;
 
         double payment = sum * (percent * Math.pow(1 + percent, period) /
@@ -28,8 +30,6 @@ public class CreditCalculator {
 
     public List<List<Double>> calculateDifferent(double sum, int period, double percent) {
         List<List<Double>> result = new ArrayList<>();
-        period *= 12;
-
         double paymentPerMonth = sum / period;
 
         for (int i = 0; i < period; i++) {

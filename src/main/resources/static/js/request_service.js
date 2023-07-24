@@ -26,8 +26,9 @@ function getGraphPoints(str, min, max, step) {
     });
 }
 
-function getCreditResult(sum, period, percent) {
-    const promise = axios.get(`/credit`, {
+function getCreditResult(sum, period, percent, type) {
+    let url = type ? `/credit/annuity` : `/credit/different`;
+    const promise = axios.get(url, {
             params: {
                 sum: sum,
                 period: period,
@@ -49,11 +50,11 @@ function getHistory() {
 }
 
 function cleanHistory() {
-    axios.post(`/history/clean`);
+    axios.delete(`/history/clean`);
 }
 
 function saveHistory(value) {
-    axios.post(`/saver`, {
+    axios.post(`/history/save`, {
         str: value
     });
 }

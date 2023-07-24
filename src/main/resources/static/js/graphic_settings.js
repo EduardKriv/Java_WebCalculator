@@ -1,8 +1,7 @@
 const graphData = {
     datasets: [{
         borderColor: '#00FF7F',
-        backgroundColor: 'lightblue',
-//        pointBorderColor: '#00CED1',
+        backgroundColor: 'lightblue'
     }]
 };
 

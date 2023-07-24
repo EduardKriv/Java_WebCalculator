@@ -9,12 +9,6 @@ const totalSum = document.getElementById('totalSum');
 const tableHead = document.querySelector('.table-scroll thead');
 const tableBody = document.querySelector('.table-scroll tbody');
 
-
-function clearTable() {
-    const table = document.querySelector('.table-scroll tbody');
-    table.innerHTML = '';
-}
-
 function tableHeadGenerate() {
     tableHead.innerHTML = `
         <tr>
@@ -42,12 +36,14 @@ function tableBodyGenerate(resp) {
 
 function calcCredit() {
     const round = (num) => { return Math.round(num * 100) / 100.; };
+    let isAnnuity = document.getElementById('annuity').checked;
 
-    getCreditResult(sum.value, period.value, percent.value).then((resp) => {
+    getCreditResult(sum.value, period.value * 12, percent.value, isAnnuity).then((resp) => {
         tableHeadGenerate();
         tableBodyGenerate(resp);
 
         pay.value = resp[0][1];
+        if (!isAnnuity) pay.value += " ... " + resp[resp.length - 1][1];
         totalSum.value = round(resp.reduce((acc, num) => acc + num[1], 0.));
         totalPercent.value = round(totalSum.value - sum.value);
 

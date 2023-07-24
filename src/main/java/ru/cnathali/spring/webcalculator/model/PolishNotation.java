@@ -1,9 +1,11 @@
 package ru.cnathali.spring.webcalculator.model;
 
 import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Component;
 
 import java.util.Stack;
 
+@Component
 public class PolishNotation extends Lexeme {
     private final Stack<String> outputStack = new Stack<>();
     private final Stack<Character> tempStack = new Stack<>();
@@ -20,16 +22,19 @@ public class PolishNotation extends Lexeme {
                 case BRACKET_R            -> readBracketR();
             }
         }
-
-        while (tempStack.size() > 0) {
-            outputStack.push(String.valueOf(tempStack.pop()));
-        }
+        reversStack();
 
         while (outputStack.size() > 0) {
             result.push(outputStack.pop());
         }
 
         return result;
+    }
+
+    private void reversStack() {
+        while (tempStack.size() > 0) {
+            outputStack.push(String.valueOf(tempStack.pop()));
+        }
     }
 
     private int getPriority(char ch) {
@@ -53,8 +58,9 @@ public class PolishNotation extends Lexeme {
                 .replaceAll("sin", "s")
                 .replaceAll("cos", "c")
                 .replaceAll("tan", "t")
-                .replaceAll("(?<=[+-\\/*\\^%\\(])([-])|^([-])", "~")
-                .replaceAll("(?<=[+-\\/*\\^%\\(])([+])|^([+])", "");
+                .replaceAll("(?<=[+\\-/*^%(])(-)|^(-)", "~")
+                .replaceAll("(?<=[+\\-/*^%(])([+])|^([+])", "")
+                .replaceAll("(?<=[)x])(f{0})(?=[(olqSCTsctx\\d])|(?<=\\d)(f{0})(?=[(olqSCTsctx])", "*");
     }
 
     private int readNumber(char @NotNull [] str, int pos) {

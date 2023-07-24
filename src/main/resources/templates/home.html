@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>Java Calculator</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.5.1/math.js"></script>
 
     <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="/static/css/guide.css" th:href="@{/css/guide.css}">
     <link rel="stylesheet" href="/static/css/interface.css" th:href="@{/css/interface.css}">
     <link rel="stylesheet" href="/static/css/header.css" th:href="@{/css/header.css}">
     <link rel="stylesheet" href="/static/css/dialog.css" th:href="@{/css/dialog.css}">
@@ -15,15 +16,13 @@
     <link rel="stylesheet" href="/static/css/credit.css" th:href="@{/css/credit.css}">
     <link rel="stylesheet" href="/static/css/graph_func.css" th:href="@{/css/graph_func.css}">
 
-
-<!--    <script type="text/javascript" src="../static/js/theme_change.js" th:src="@{js/theme_change.js}"></script>-->
+    <script type="text/javascript" src="../static/js/theme_change.js" th:src="@{js/theme_change.js}"></script>
 
 
     <script type="text/javascript" src="../static/js/request_service.js" th:src="@{js/request_service.js}"></script>
     <script type="text/javascript" src="../static/js/graphic_settings.js" th:src="@{js/graphic_settings.js}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
 
 </head>
@@ -32,19 +31,19 @@
     <div class="slider">
         <input type="radio" name="slide-group" id="webCalc"/>
         <input type="radio" name="slide-group" id="creditCalc"/>
-        <input type="radio" name="slide-group" id="depositCalc"/>
+        <input type="radio" name="slide-group" id="guide"/>
         <input type="checkbox" id="graph"/>
 
         <div class="header">
 
             <label class="head-item" for="webCalc">Calculator</label>
             <label class="head-item" for="creditCalc">Credit</label>
-            <label class="head-item" for="depositCalc">Deposit</label>
+            <label class="head-item" for="guide">Guide</label>
 
             <div class="head-item">Themes
                 <a class="hide-theme">
-                    <button class="head-but" type="submit" onclick="setWhiteTextColor()">Light mode</button>
-                    <button class="head-but" type="submit" onclick="setRedTextColor()">Dark mode</button>
+                    <button class="head-but" type="submit" onclick="setLightTheme()">Light mode</button>
+                    <button class="head-but" type="submit" onclick="setDarkTheme()">Dark mode</button>
                 </a>
             </div>
 
@@ -97,7 +96,7 @@
                                 <button class="buttons other">x</button>
                                 <button class="buttons ac">AC</button>
                                 <button class="buttons oper">^</button>
-                                <button class="buttons">+/-</button>
+                                <button class="buttons back"><-</button>
                                 <button class="buttons oper">/</button>
 
                                 <button class="buttons func">sin</button>
@@ -145,19 +144,19 @@
                     <p class="box-center">Условия кредита</p>
 
                     <label for="credit-sum">Сумма кредита</label><input type="number" id="credit-sum">
-                    <label class="pay-type" for="paymentType1">Аннуитетные
-                        <input id="paymentType1" type="radio" name="credit-type" checked/>
+                    <label class="pay-type" for="annuity">Аннуитетные
+                        <input id="annuity" type="radio" name="credit-type" checked/>
                     </label>
                     <label for="credit-period">Срок кредита</label><input type="number" id="credit-period">
-                    <label class="pay-type" for="payment_type2">Дифференцированные
-                        <input id="payment_type2" type="radio" name="credit-type"/>
+                    <label class="pay-type" for="different">Дифференцированные
+                        <input id="different" type="radio" name="credit-type"/>
                     </label>
                     <label for="credit-percent">Процентная ставка</label><input type="number" id="credit-percent">
 
                     <button id="credit-result" class="buttons pay-type" onclick="calcCredit()">Расчитать</button>
                     <hr class="box-center"/>
 
-                    <label for="pay">Ежемесячный платеж</label><input readonly type="number" id="pay">
+                    <label for="pay">Ежемесячный платеж</label><input readonly id="pay">
 
                     <canvas id="credit-graph"></canvas>
 
@@ -170,6 +169,51 @@
 
                 </div>
 
+        </div>
+
+        <div class="wrapper guide">
+
+            <div class="content">
+
+                    <h1>Реализация SmartCalc v3.0</h1>
+                    <h2>Калькулятор</h2>
+                    <ul>
+                        <li>Вычисление производится после полного ввода вычисляемого выражения и нажатия на символ <kbd>=</kbd></li>
+                        <li>Вычисление произвольных скобочных арифметических выражений в инфиксной нотации</li>
+                        <li>Вычисление произвольных скобочных арифметических выражений в инфиксной нотации с подстановкой значения переменной x в виде числа</li>
+                        <li>На вход программы могут подаваться как целые числа, так и вещественные числа, записанные и через точку, и в экспоненциальной форме записи</li>
+                        <li>Обработка выражения с опущенным знаком *</li>
+                        <li>Программа хранит историю операций, позволяет загружать выражения из истории и очищать историю целиком</li>
+                        <li>История сохраняется между запусками приложения</li>
+                        <li>Проверяемая точность дробной части - 7 знаков после запятой</li>
+                        <li>Программа поддерживает возможность ввода до 255 символов</li>
+                        <li><b>Арифметические операторы:</b><em>
+                            скобки, сложение, вычитание, умножение, деление, возведение в степень, остаток от деления, унарный плюс, унарный минус
+                        </em></li>
+                        <li><b>Функции:</b><em>
+                            косинус, синус, тангенс, арккосинус, арксинус, арктангенс, квадратный корень, натуральный логарифм, десятичный логарифм
+                        </em></li>
+                    </ul>
+
+                    <h2>Кредитный калькулятор</h2>
+                    <ul>
+                        <li>Входные данные: общая сумма кредита, срок, процентная ставка, тип (аннуитетный, дифференцированный)</li>
+                        <li>Выходные данные: ежемесячный платеж, переплата по кредиту, общая выплата, таблица ежемесячных платежей</li>
+                        <li>График, показывающий соотношение суммы кредита и переплаты по кредиту</li>
+                    </ul>
+                    <h2>График</h2>
+                    <ul>
+                        <li>Построение графика функции, заданной с помощью выражения в инфиксной нотации с переменной x (с координатными осями и сеткой с адаптивным шагом)</li>
+                        <li>Область определения и область значения функций ограничиваются числами от -1000000 до 1000000</li>
+                        <li>Для построения графиков функции возможно дополнительно указывать отображаемые область определения и область значения</li>
+                    </ul>
+                    <h2>Интерфейс</h2>
+                    <ul>
+                        <li><b>Цветовые схемы:</b><em>
+                            light mode, dark mode
+                        </em></li>
+                    </ul>
+            </div>
         </div>
 
     </div>

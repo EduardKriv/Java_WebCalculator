@@ -1,6 +1,6 @@
 const table = document.querySelector('.history-table');
 
-function createHistoryRow(str) {
+function addHistoryRow(str) {
     const tr = document.createElement('tr');
     const td = document.createElement('td');
     td.addEventListener('dblclick', () => {
@@ -16,7 +16,7 @@ function createHistoryRow(str) {
 function fillHistoryTable() {
     getHistory().then((resp) => {
         resp.forEach((str) => {
-            createHistoryRow(str);
+            addHistoryRow(str);
         });
     });
 }
