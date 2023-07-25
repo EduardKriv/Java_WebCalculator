@@ -18,10 +18,6 @@ public class ArithmeticCalcController {
     @Autowired
     private ArithmeticCalculator calculator;
 
-//    public ArithmeticCalcController(final ArithmeticCalculator calculator) {
-//        this.calculator = calculator;
-//    }
-
     @GetMapping("/")
     public String getMainPage() {
         return "home";
@@ -34,16 +30,6 @@ public class ArithmeticCalcController {
 
         return calculator.calculate(str, x);
     }
-
-//    @ResponseBody
-//    @GetMapping("/graph")
-//    public List<List<Double>> getGraphPoints(@RequestParam(name = "expr") String str,
-//                                             @RequestParam(defaultValue = "-10", required = false, name = "minX") Double minX,
-//                                             @RequestParam(defaultValue = "10",  required = false, name = "maxX") Double maxX,
-//                                             @RequestParam(defaultValue = "0.2", required = false, name = "step") Double step) {
-//
-//        return calculator.calculateGraphPoints(str, minX, maxX, step);
-//    }
 
     @ResponseBody
     @GetMapping("/history/get")

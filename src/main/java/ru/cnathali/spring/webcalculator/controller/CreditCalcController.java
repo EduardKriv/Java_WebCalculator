@@ -15,10 +15,6 @@ public class CreditCalcController {
     @Autowired
     private CreditCalculator creditCalculator;
 
-//    public CreditCalcController(CreditCalculator creditCalculator) {
-//        this.creditCalculator = creditCalculator;
-//    }
-
     @ResponseBody
     @GetMapping("/credit/annuity")
     public List<List<Double>> getCreditResultAnn(@RequestParam(name = "sum") double sum,
