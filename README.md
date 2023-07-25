@@ -1,2 +1,2 @@
 # Java_WebCalculator
-![image](materials/calc.gif)
+![image](materials/gif.gif)
