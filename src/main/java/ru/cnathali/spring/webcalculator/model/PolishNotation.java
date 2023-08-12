@@ -24,7 +24,7 @@ public class PolishNotation extends Lexeme {
         }
         reversStack();
 
-        while (outputStack.size() > 0) {
+        while (!outputStack.isEmpty()) {
             result.push(outputStack.pop());
         }
 
@@ -32,7 +32,7 @@ public class PolishNotation extends Lexeme {
     }
 
     private void reversStack() {
-        while (tempStack.size() > 0) {
+        while (!tempStack.isEmpty()) {
             outputStack.push(String.valueOf(tempStack.pop()));
         }
     }
@@ -82,7 +82,7 @@ public class PolishNotation extends Lexeme {
     }
 
     private void readOperator(char ch) {
-        while (ch != '^' && tempStack.size() > 0 && getPriority(tempStack.peek()) >= getPriority(ch)) {
+        while (ch != '^' && !tempStack.isEmpty() && getPriority(tempStack.peek()) >= getPriority(ch)) {
             outputStack.push(String.valueOf(tempStack.pop()));
         }
         tempStack.push(ch);
@@ -94,7 +94,7 @@ public class PolishNotation extends Lexeme {
         }
         tempStack.pop();
 
-        if (tempStack.size() > 0 && getLexemeType(tempStack.peek()) == lexemeType.FUNCTION) {
+        if (!tempStack.isEmpty() && getLexemeType(tempStack.peek()) == lexemeType.FUNCTION) {
             outputStack.push(String.valueOf(tempStack.pop()));
         }
     }
