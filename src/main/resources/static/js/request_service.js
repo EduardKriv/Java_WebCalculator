@@ -1,5 +1,5 @@
 function getResult(value, x_value) {
-    const promise = axios.get(`/test`, {
+    const promise = axios.get(`/calculate`, {
         params: {
             expr: value,
             x: x_value

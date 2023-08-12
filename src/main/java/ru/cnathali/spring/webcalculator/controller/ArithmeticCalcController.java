@@ -17,7 +17,7 @@ public class ArithmeticCalcController {
     @Autowired
     private ArithmeticCalculator calculator;
 
-    @GetMapping("/test")
+    @GetMapping("/calculate")
     public double getDouble(@RequestParam(name = "expr") String str,
                             @RequestParam(defaultValue = "0.0", required = false, name = "x") Double x) {
 
