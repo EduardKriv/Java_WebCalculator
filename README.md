@@ -1,5 +1,5 @@
 # Java_WebCalculator
-![image](https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/F945pxbGk0AzAw)
+![image](https://github.com/EduardKriv/Java_WebCalculator/blob/main/materials/menu-20fps-800.gif)
 
 - **Арифметические операторы**:
 
