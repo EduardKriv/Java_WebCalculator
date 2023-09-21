@@ -8,7 +8,7 @@ import java.util.List;
 @Component
 public class CreditCalculator {
 
-    public List<List<Double>> calculateAnnuity(double sum, int period, double percent) {
+    public static List<List<Double>> calculateAnnuity(double sum, int period, double percent) {
         List<List<Double>> result = new ArrayList<>();
         percent = percent / 12. / 100.;
 
@@ -28,7 +28,7 @@ public class CreditCalculator {
         return result;
     }
 
-    public List<List<Double>> calculateDifferent(double sum, int period, double percent) {
+    public static List<List<Double>> calculateDifferent(double sum, int period, double percent) {
         List<List<Double>> result = new ArrayList<>();
         double paymentPerMonth = sum / period;
 
@@ -46,7 +46,7 @@ public class CreditCalculator {
         return result;
     }
 
-    private double round(double value) {
+    private static double round(double value) {
         return Math.round(value * 100) / 100.;
     }
 }

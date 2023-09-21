@@ -10,10 +10,14 @@ import java.util.Stack;
 
 @Component
 public class Graph {
+    private final ArithmeticCalculator calculator;
+    private final PolishNotation rpn;
+
     @Autowired
-    private ArithmeticCalculator calculator;
-    @Autowired
-    private PolishNotation rpn;
+    public Graph(ArithmeticCalculator calculator, PolishNotation rpn) {
+        this.calculator = calculator;
+        this.rpn = rpn;
+    }
 
     public List<List<Double>> calcPoints(@NotNull String expr, double minX, double maxX, double step) {
         final double MAX_FUNC_VALUE = 1e6;

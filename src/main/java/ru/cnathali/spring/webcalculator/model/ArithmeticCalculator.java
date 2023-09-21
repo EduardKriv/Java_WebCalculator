@@ -8,9 +8,9 @@ import java.util.Stack;
 
 @Component
 public class ArithmeticCalculator extends Lexeme {
-    @Autowired
     private final PolishNotation rpn;
 
+    @Autowired
     public ArithmeticCalculator(PolishNotation rpn) {
         this.rpn = rpn;
     }

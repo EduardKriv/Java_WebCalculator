@@ -14,8 +14,12 @@ import java.util.prefs.BackingStoreException;
 
 @RestController
 public class ArithmeticCalcController {
+    private final ArithmeticCalculator calculator;
+
     @Autowired
-    private ArithmeticCalculator calculator;
+    public ArithmeticCalcController(ArithmeticCalculator calculator) {
+        this.calculator = calculator;
+    }
 
     @GetMapping("/calculate")
     public double getDouble(@RequestParam(name = "expr") String str,

@@ -10,8 +10,12 @@ import java.util.List;
 
 @RestController
 public class GraphController {
+    private final Graph graph;
+
     @Autowired
-    private Graph graph;
+    public GraphController(Graph graph) {
+        this.graph = graph;
+    }
 
     @GetMapping("/graph")
     public List<List<Double>> getGraphPoints(@RequestParam(name = "expr") String str,
