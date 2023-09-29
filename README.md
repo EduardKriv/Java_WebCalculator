@@ -54,5 +54,6 @@
 
 - Вход: общая сумма кредита, срок, процентная ставка, тип (аннуитетный, дифференцированный)
 - Выход: ежемесячный платеж, переплата по кредиту, общая выплата, диаграмма, показывающая соотношение суммы кредита и переплаты по кредиту
-  ![image](https://github.com/EduardKriv/Java_WebCalculator/blob/main/materials/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202023-09-21%20%D0%B2%208.39.04%20PM.png)
+  
+![image](https://github.com/EduardKriv/Java_WebCalculator/blob/main/materials/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202023-09-21%20%D0%B2%208.39.04%20PM.png)
 
